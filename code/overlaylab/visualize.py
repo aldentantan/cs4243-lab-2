@@ -104,10 +104,13 @@ def montage(images: Sequence[np.ndarray], cols: int = 3, pad: int = 4, width: Op
 
 
 def label(image: np.ndarray, text: str, org=(8, 24), scale: float = 0.7) -> np.ndarray:
-    out = to_float(image).copy()
+    # OpenCV 5's drawing_text implementation requires CV_8U input, while the
+    # visualization helpers otherwise use RGB float images in [0, 1]. Draw in
+    # uint8, then restore the float convention used by montage()/matplotlib.
+    out = to_uint8(to_float(image))
     cv2.putText(out, text, org, cv2.FONT_HERSHEY_SIMPLEX, scale, (0, 0, 0), 3, cv2.LINE_AA)
-    cv2.putText(out, text, org, cv2.FONT_HERSHEY_SIMPLEX, scale, (1, 1, 1), 1, cv2.LINE_AA)
-    return out
+    cv2.putText(out, text, org, cv2.FONT_HERSHEY_SIMPLEX, scale, (255, 255, 255), 1, cv2.LINE_AA)
+    return out.astype(np.float32) / 255.0
 
 
 # ---------------------------------------------------------------------------

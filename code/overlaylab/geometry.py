@@ -28,8 +28,40 @@ def bilinear_sample(image: np.ndarray, y: np.ndarray, x: np.ndarray) -> np.ndarr
     reproduces the corresponding pixel. ``y`` and ``x`` may be arrays of any
     matching shape so that a whole grid can be sampled at once.
     """
-    # YOUR CODE HERE
-    raise NotImplementedError("YOUR CODE HERE")
+    image = np.asarray(image)
+    y = np.asarray(y, dtype=np.float64)
+    x = np.asarray(x, dtype=np.float64)
+    if x.shape != y.shape:
+        raise ValueError("x and y coordinates must have matching shapes")
+    if image.ndim not in (2, 3):
+        raise ValueError("image must be a 2-D grayscale or 3-D colour array")
+    height, width = image.shape[:2]
+    if height == 0 or width == 0:
+        raise ValueError("cannot sample an image with an empty spatial dimension")
+
+    dtype = np.result_type(image.dtype, np.float32)
+    img = image.astype(dtype, copy=False)
+    yy = np.clip(y, 0.0, float(height - 1))
+    xx = np.clip(x, 0.0, float(width - 1))
+
+    y0 = np.floor(yy).astype(np.intp)
+    x0 = np.floor(xx).astype(np.intp)
+    y1 = np.minimum(y0 + 1, height - 1)
+    x1 = np.minimum(x0 + 1, width - 1)
+    wy = yy - y0
+    wx = xx - x0
+
+    p00 = img[y0, x0]
+    p01 = img[y0, x1]
+    p10 = img[y1, x0]
+    p11 = img[y1, x1]
+    if image.ndim == 3:
+        wx = wx[..., None]
+        wy = wy[..., None]
+
+    top = (1.0 - wx) * p00 + wx * p01
+    bottom = (1.0 - wx) * p10 + wx * p11
+    return (1.0 - wy) * top + wy * bottom
 
 
 def rectangle_to_rectangle(src_size: Tuple[int, int], dst_size: Tuple[int, int]) -> np.ndarray:
@@ -53,8 +85,25 @@ def normalise_points(pts: np.ndarray) -> Tuple[np.ndarray, np.ndarray]:
     points to zero centroid and scales them so that the mean distance from the
     origin is sqrt(2), and ``normalised`` are the transformed N x 2 points.
     """
-    # YOUR CODE HERE
-    raise NotImplementedError("YOUR CODE HERE")
+    pts = np.asarray(pts, dtype=np.float64)
+    if pts.ndim != 2 or pts.shape[1:] != (2,):
+        raise ValueError("pts must be an N x 2 array")
+    if len(pts) == 0:
+        raise ValueError("at least one point is required")
+    if not np.all(np.isfinite(pts)):
+        raise ValueError("pts must contain only finite coordinates")
+
+    centroid = pts.mean(axis=0)
+    centered = pts - centroid
+    mean_distance = np.linalg.norm(centered, axis=1).mean()
+    # A zero-spread set cannot be scaled to mean distance sqrt(2). Keep a
+    # finite translation transform; downstream DLT rank checks reject it.
+    scale = np.sqrt(2.0) / mean_distance if mean_distance > np.finfo(float).eps else 1.0
+    T = np.array([[scale, 0.0, -scale * centroid[0]],
+                  [0.0, scale, -scale * centroid[1]],
+                  [0.0, 0.0, 1.0]], dtype=np.float64)
+    normalized = centered * scale
+    return T, normalized
 
 
 def dlt_homography(src: np.ndarray, dst: np.ndarray
@@ -72,20 +121,96 @@ def dlt_homography(src: np.ndarray, dst: np.ndarray
     numerically meaningless matrix. ``singular_values`` are those of A, so
     that conditioning can be inspected.
     """
-    # YOUR CODE HERE
-    raise NotImplementedError("YOUR CODE HERE")
+    src = np.asarray(src, dtype=np.float64)
+    dst = np.asarray(dst, dtype=np.float64)
+    if src.ndim != 2 or dst.ndim != 2 or src.shape[1:] != (2,) or dst.shape[1:] != (2,):
+        raise ValueError("src and dst must be N x 2 point arrays")
+    if len(src) != len(dst):
+        raise ValueError("src and dst must contain the same number of points")
+    if len(src) < 4:
+        raise ValueError("at least four correspondences are required")
+
+    T_src, src_n = normalise_points(src)
+    T_dst, dst_n = normalise_points(dst)
+    n = len(src)
+    A = np.zeros((2 * n, 9), dtype=np.float64)
+    x, y = src_n[:, 0], src_n[:, 1]
+    u, v = dst_n[:, 0], dst_n[:, 1]
+
+    A[0::2, 0:3] = np.column_stack((-x, -y, -np.ones(n)))
+    A[0::2, 6:9] = np.column_stack((u * x, u * y, u))
+    A[1::2, 3:6] = np.column_stack((-x, -y, -np.ones(n)))
+    A[1::2, 6:9] = np.column_stack((v * x, v * y, v))
+
+    try:
+        _, singular_values, Vt = np.linalg.svd(A, full_matrices=True)
+    except np.linalg.LinAlgError:
+        return None, np.empty((0,), dtype=np.float64), False
+
+    # A unique homography requires rank at least eight. With exactly four
+    # pairs, A is 8 x 9 and the last row of full Vt spans its null space.
+    tolerance = np.finfo(np.float64).eps * max(A.shape) * singular_values[0]
+    rank = int(np.count_nonzero(singular_values > tolerance))
+    if rank < 8:
+        return None, singular_values, False
+
+    H_normalized = Vt[-1].reshape(3, 3)
+    try:
+        H = np.linalg.inv(T_dst) @ H_normalized @ T_src
+    except np.linalg.LinAlgError:
+        return None, singular_values, False
+
+    if not np.all(np.isfinite(H)):
+        return None, singular_values, False
+    if abs(H[2, 2]) > 1e-12:
+        H = H / H[2, 2]
+    else:
+        norm = np.linalg.norm(H)
+        if norm <= np.finfo(np.float64).eps:
+            return None, singular_values, False
+        H = H / norm
+        # Fix the otherwise arbitrary sign for deterministic output.
+        pivot = np.unravel_index(np.argmax(np.abs(H)), H.shape)
+        if H[pivot] < 0:
+            H = -H
+    return H, singular_values, True
 
 
 def transfer_points(H: np.ndarray, pts: np.ndarray) -> np.ndarray:
     """Apply a homography to N x 2 points and dehomogenise: pi(H x)."""
-    # YOUR CODE HERE
-    raise NotImplementedError("YOUR CODE HERE")
+    H = np.asarray(H, dtype=np.float64)
+    pts = np.asarray(pts, dtype=np.float64).reshape(-1, 2)
+    homogeneous = np.column_stack((pts, np.ones(len(pts), dtype=np.float64)))
+    projected = homogeneous @ H.T
+    denominator = projected[:, 2]
+
+    result = np.full((len(pts), 2), np.nan, dtype=np.float64)
+    valid = np.isfinite(projected).all(axis=1) & (np.abs(denominator) > 1e-12)
+    result[valid] = projected[valid, :2] / denominator[valid, None]
+    return result
 
 
 def symmetric_transfer_error(H: np.ndarray, src: np.ndarray, dst: np.ndarray) -> np.ndarray:
     """Per-correspondence e_i = |x' - pi(H x)|^2 + |x - pi(H^-1 x')|^2."""
-    # YOUR CODE HERE
-    raise NotImplementedError("YOUR CODE HERE")
+    src = np.asarray(src, dtype=np.float64)
+    dst = np.asarray(dst, dtype=np.float64)
+    if src.ndim != 2 or dst.ndim != 2 or src.shape[1:] != (2,) or dst.shape[1:] != (2,):
+        raise ValueError("src and dst must be N x 2 point arrays")
+    if len(src) != len(dst):
+        raise ValueError("src and dst must contain the same number of points")
+
+    try:
+        H_inv = np.linalg.inv(np.asarray(H, dtype=np.float64))
+    except np.linalg.LinAlgError:
+        return np.full(len(src), np.inf, dtype=np.float64)
+
+    forward = transfer_points(H, src)
+    backward = transfer_points(H_inv, dst)
+    forward_sq = np.sum((forward - dst) ** 2, axis=1)
+    backward_sq = np.sum((backward - src) ** 2, axis=1)
+    errors = forward_sq + backward_sq
+    errors[~np.isfinite(errors)] = np.inf
+    return errors
 
 
 def _three_collinear(p: np.ndarray, tol: float = 1e-6) -> bool:
@@ -115,8 +240,95 @@ def ransac_homography(src: np.ndarray, dst: np.ndarray, config: RansacConfig
     Returns (H, inlier_mask, residuals, iterations_used, status) where status
     is False when no model reached ``config.min_inliers`` (H may then be None).
     """
-    # YOUR CODE HERE
-    raise NotImplementedError("YOUR CODE HERE")
+    src = np.asarray(src, dtype=np.float64)
+    dst = np.asarray(dst, dtype=np.float64)
+    if src.ndim != 2 or dst.ndim != 2 or src.shape[1:] != (2,) or dst.shape[1:] != (2,):
+        raise ValueError("src and dst must be N x 2 point arrays")
+    if len(src) != len(dst):
+        raise ValueError("src and dst must contain the same number of points")
+    if not np.all(np.isfinite(src)) or not np.all(np.isfinite(dst)):
+        raise ValueError("src and dst must contain only finite coordinates")
+
+    n = len(src)
+    empty_mask = np.zeros(n, dtype=bool)
+    empty_residuals = np.full(n, np.inf, dtype=np.float64)
+    max_iterations = max(0, int(config.max_iterations))
+    if n < 4 or max_iterations == 0:
+        return None, empty_mask, empty_residuals, 0, False
+
+    rng = config.rng()
+    best_H = None
+    best_mask = empty_mask
+    best_residuals = empty_residuals
+    best_count = 0
+    best_sum = np.inf
+    iterations = 0
+    iteration_limit = max_iterations
+    threshold = float(config.threshold)
+    min_inliers = max(0, int(config.min_inliers))
+    confidence = float(config.confidence)
+
+    while iterations < iteration_limit:
+        sample_idx = rng.choice(n, size=4, replace=False)
+        iterations += 1
+        src_sample = src[sample_idx]
+        if _three_collinear(src_sample):
+            continue
+
+        candidate, _, ok = dlt_homography(src_sample, dst[sample_idx])
+        if not ok or candidate is None:
+            continue
+
+        residuals = symmetric_transfer_error(candidate, src, dst)
+        inliers = np.isfinite(residuals) & (residuals < threshold)
+        count = int(inliers.sum())
+        residual_sum = float(residuals[inliers].sum())
+        if count > best_count or (count == best_count and residual_sum < best_sum):
+            best_H = candidate
+            best_mask = inliers
+            best_residuals = residuals
+            best_count = count
+            best_sum = residual_sum
+
+            # Update the iteration bound from the probability of drawing an
+            # all-inlier four-point sample. Keep it at least as large as the
+            # number of samples already consumed.
+            inlier_fraction = count / n
+            if inlier_fraction >= 1.0:
+                required = 1
+            elif inlier_fraction > 0.0 and confidence > 0.0:
+                if confidence >= 1.0:
+                    required = max_iterations
+                else:
+                    miss_probability = 1.0 - inlier_fraction ** 4
+                    if miss_probability <= 0.0:
+                        required = 1
+                    elif miss_probability >= 1.0:
+                        required = max_iterations
+                    else:
+                        required = int(np.ceil(
+                            np.log1p(-confidence) / np.log(miss_probability)
+                        ))
+            else:
+                required = max_iterations
+            iteration_limit = min(
+                iteration_limit,
+                max(iterations, max(1, required)),
+            )
+
+    # A best model below the configured consensus size is diagnostic only.
+    if best_H is None or best_count < min_inliers or best_count < 4:
+        return None, best_mask, best_residuals, iterations, False
+
+    refit, _, refit_ok = dlt_homography(src[best_mask], dst[best_mask])
+    if not refit_ok or refit is None:
+        return None, best_mask, best_residuals, iterations, False
+
+    residuals = symmetric_transfer_error(refit, src, dst)
+    inliers = np.isfinite(residuals) & (residuals < threshold)
+    if int(inliers.sum()) < min_inliers:
+        return None, inliers, residuals, iterations, False
+    return refit, inliers, residuals, iterations, True
 
 
 def warp_artwork(artwork: np.ndarray, H: np.ndarray, frame_shape: Tuple[int, ...]
@@ -129,8 +341,59 @@ def warp_artwork(artwork: np.ndarray, H: np.ndarray, frame_shape: Tuple[int, ...
     coverage H x W bool); pixels that map outside the artwork receive no
     coverage and are zero in ``warped``.
     """
-    # YOUR CODE HERE
-    raise NotImplementedError("YOUR CODE HERE")
+    artwork = np.asarray(artwork)
+    H = np.asarray(H, dtype=np.float64)
+    frame_shape = tuple(frame_shape)
+    if artwork.ndim not in (2, 3):
+        raise ValueError("artwork must be a 2-D grayscale or 3-D colour image")
+    if len(frame_shape) < 2:
+        raise ValueError("frame_shape must contain height and width")
+    if H.shape != (3, 3):
+        raise ValueError("H must be a 3 x 3 homography")
+
+    artwork_h, artwork_w = artwork.shape[:2]
+    frame_h, frame_w = int(frame_shape[0]), int(frame_shape[1])
+    if artwork_h == 0 or artwork_w == 0 or frame_h < 0 or frame_w < 0:
+        raise ValueError("artwork dimensions must be non-empty and frame dimensions non-negative")
+    try:
+        H_inv = np.linalg.inv(H)
+    except np.linalg.LinAlgError as exc:
+        raise ValueError("H must be invertible") from exc
+
+    output_shape = ((frame_h, frame_w) if artwork.ndim == 2
+                    else (frame_h, frame_w, artwork.shape[2]))
+    warped = np.zeros(output_shape, dtype=np.float32)
+    coverage = np.zeros((frame_h, frame_w), dtype=bool)
+    if frame_h == 0 or frame_w == 0:
+        return warped, coverage
+
+    yy, xx = np.mgrid[0:frame_h, 0:frame_w]
+    frame_points = np.stack((xx.ravel(), yy.ravel(), np.ones(frame_h * frame_w)), axis=0)
+    source_points = H_inv @ frame_points
+    denominator = source_points[2]
+    finite = np.isfinite(source_points).all(axis=0) & (np.abs(denominator) > 1e-12)
+
+    source_x = np.full(denominator.shape, np.nan, dtype=np.float64)
+    source_y = np.full(denominator.shape, np.nan, dtype=np.float64)
+    source_x[finite] = source_points[0, finite] / denominator[finite]
+    source_y[finite] = source_points[1, finite] / denominator[finite]
+
+    # Allow tiny floating-point error at the projected rectangle boundary,
+    # then clamp those boundary samples to the valid pixel-centre interval.
+    tolerance = 1e-9
+    valid = (finite &
+             (source_x >= -tolerance) & (source_x <= artwork_w - 1 + tolerance) &
+             (source_y >= -tolerance) & (source_y <= artwork_h - 1 + tolerance))
+    coverage_flat = valid.reshape(frame_h, frame_w)
+    coverage[:] = coverage_flat
+
+    if np.any(valid):
+        sx = np.clip(source_x[valid], 0.0, float(artwork_w - 1))
+        sy = np.clip(source_y[valid], 0.0, float(artwork_h - 1))
+        sampled = bilinear_sample(artwork.astype(np.float32, copy=False), sy, sx)
+        warped[coverage] = sampled.astype(np.float32, copy=False)
+
+    return warped, coverage
 
 
 __all__ = ["bilinear_sample", "rectangle_to_rectangle", "normalise_points", "dlt_homography", "transfer_points",
