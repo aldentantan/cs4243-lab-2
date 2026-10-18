@@ -34,7 +34,23 @@ _PALETTES = {
 
 def _put_text(img: np.ndarray, text: str, org: Tuple[int, int], scale: float,
               colour: Tuple[float, float, float], thickness: int, font=cv2.FONT_HERSHEY_DUPLEX):
-    cv2.putText(img, text, org, font, scale, colour, thickness, cv2.LINE_AA)
+    # OpenCV 5 requires CV_8U for putText. The synthetic textures are float
+    # RGB images, so draw into an 8-bit alpha mask and blend in float space.
+    if img.dtype == np.uint8:
+        draw_colour = tuple(int(round(c * 255)) if 0.0 <= c <= 1.0 else int(round(c))
+                            for c in colour)
+        cv2.putText(img, text, org, font, scale, draw_colour, thickness, cv2.LINE_AA)
+        return
+
+    mask = np.zeros(img.shape[:2], dtype=np.uint8)
+    cv2.putText(mask, text, org, font, scale, 255, thickness, cv2.LINE_AA)
+    alpha = mask.astype(np.float32) / 255.0
+    if img.ndim == 3:
+        alpha = alpha[..., None]
+        ink = np.asarray(colour, dtype=np.float32)
+    else:
+        ink = float(np.mean(colour))
+    img[...] = img * (1.0 - alpha) + ink * alpha
 
 
 def make_board_texture(width: int = 1600, height: int = 400, seed: int = 0,
