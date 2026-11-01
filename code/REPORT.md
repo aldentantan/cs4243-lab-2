@@ -13,12 +13,19 @@ In `geometry.py`, `bilinear_sample` samples gray or color images at floating-poi
 
 Notebook 1 exercises these implementations in its Harris/NMS, descriptor/ratio-test, normalized-DLT, RANSAC, and warp-convention sections. Notebook 2 exercises the higher-level localisation functions. `localise_board` joins detected features to RANSAC and projects the reference corners; `artwork_to_frame` composes the artwork-to-reference rectangle map with the board-to-frame homography; `overlay_frame` paints the warped coverage; and `evaluate_audit_frames` measures corner errors and summaries using the supplied metrics.
 
-On the **common clip, validation subset** at the **640-pixel notebook resolution** with the frozen keypoint, descriptor, ratio-test, and RANSAC configuration, the p90 normalized corner error was **0.82%**. The notebook selected a **1.00%** success threshold by rounding that validation p90 up to the next percentage point. On the same common clip and method at 640 pixels, the **test subset** had median error **0.52%**, p90 error **0.71%**, and success on **92.31%** of its annotated frames, with no failed localisations. These are notebook-resolution results; the full-resolution stress table remains pending.
+On the **common clip, validation subset** at the **640-pixel notebook resolution** with the frozen keypoint, descriptor, ratio-test, and RANSAC configuration, the p90 normalized corner error was **0.82%**. The notebook selected a **1.00%** success threshold by rounding that validation p90 up to the next percentage point. On the same common clip and method at 640 pixels, the **test subset** had median error **0.52%**, p90 error **0.71%**, and success on **92.31%** of its annotated frames, with no failed localisations. These are notebook-resolution results; the generated table below reports the final full-resolution results separately.
 
 ### Stress table (Stage 1)
 <!-- generated rows: common · validation, common · test, viewpoint, scale — median / p90 corner error, success at the frozen threshold, inliers, inlier ratio, affine median error / success -->
 
-TODO: paste the generated Stage 1 table from `outputs/stress_tables.md` unchanged after the final pipeline runs. That generated file is not present yet.
+| row | frames | median err | p90 err | success | inliers (median) | inlier ratio | affine median err | affine success |
+|---|---|---|---|---|---|---|---|---|
+| common · validation | 13 | 0.39% | 0.61% | 77% | 65 | 0.859 | 0.82% | 46% |
+| common · test | 13 | 0.37% | 0.52% | 92% | 62 | 0.896 | 0.89% | 62% |
+| viewpoint (coke_perspective) | 32 | 0.51% | 1.04% | 50% | 13 | 0.680 | 3.07% | 6% |
+| scale (coke_scale) | 32 | 0.33% | 0.43% | 22% | 4 | 0.667 | 0.63% | 19% |
+
+`localise_board` on every annotated frame with the frozen configuration; *affine* = 6-parameter least-squares fit to the same RANSAC inliers.
 
 ### Question 1 — Matching
 
@@ -26,7 +33,7 @@ Unless identified as SIFT, these are Notebook 1 matching rates for our fixed-pat
 
 The strongest adjacent-frame collapse in Notebook 1's annotated **viewpoint stress clip (`coke_perspective`)** is from frame **448 to 464**: matching rate **0.214 to 0.036**. Over those frames, the annotated quad's top-edge angle changes by **-13.5 degrees**, apparent scale changes from **235.7 to 222.6 pixels**, and the top-versus-bottom edge keystone measure increases from **0.013 to 0.034**. In the annotated **scale stress clip (`coke_scale`)**, frame **80 to 96** drops from **0.500 to 0.132**; the angle changes by **-1.9 degrees**, apparent scale from **190.5 to 172.6 pixels**, while keystone changes only from **0.014 to 0.003**. These are diagnostic annotated stress frames, not the common-clip validation/test split. The scale pair points to the fixed patch scale as the failing descriptor component; the viewpoint pair adds perspective distortion that orientation alignment cannot remove.
 
-Because the reference has a fixed pixel size, the scale row of the Stage 1 stress table should be read as the effect of the board changing size relative to that unchanged reference. The Notebook 1 stress-pair results are consistent with a descriptor that is rotation-normalized but not scale-invariant. The table itself is still pending, so its pipeline success and corner-error values are not claimed here.
+Because the reference has a fixed pixel size, the scale row of the Stage 1 stress table should be read as the effect of the board changing size relative to that unchanged reference. The Notebook 1 stress-pair results are consistent with a descriptor that is rotation-normalized but not scale-invariant. The generated table above now supplies the final full-resolution pipeline results; the notebook matching-rate experiment remains a separate descriptor diagnostic.
 
 The labelled SIFT ablation compares the reference to **common-clip validation frame 448**: the notebook reports **0.086** for this descriptor and **0.179** for SIFT. That is evidence from the common clip, not a SIFT comparison on either stress pair. SIFT's scale-space keypoint detection gives it scale handling that this fixed-support descriptor lacks; the saved notebook output does not quantify SIFT on the `coke_perspective` or `coke_scale` pairs.
 
@@ -43,6 +50,17 @@ The saved whole-frame warp cell did not produce the requested viewpoint comparis
 ### Stress table (Stage 2)
 <!-- generated rows: common · validation / test for both variants, blur, exit — corner metrics, jitter, drift, frames tracked, REINIT / HIDE counts -->
 
+| row | frames | median err | p90 err | success | jitter | drift (≥16 fr) | longest run | tracked | (re)localisations | REINIT flags | HIDE flags |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| common · validation · independent | 13 | 0.39% | 0.61% | 77% | 6.07 px | n/a | 17 | 426 | 426 | 95 | 74 |
+| common · validation · flow-assisted | 13 | 0.39% | 0.69% | 77% | 6.18 px | n/a | 20 | 433 | 185 | 95 | 67 |
+| common · test · independent | 13 | 0.37% | 0.52% | 92% | 6.07 px | n/a | 17 | 426 | 426 | 95 | 74 |
+| common · test · flow-assisted | 13 | 0.36% | 0.53% | 92% | 6.18 px | n/a | 20 | 433 | 185 | 95 | 67 |
+| blur (coke_blur) · flow-assisted | 32 | 0.65% | 0.91% | 6% | 3.50 px | n/a | 147 | 31 | 15 | 10 | 469 |
+| exit (coke_out_of_view) · flow-assisted | 30 | 0.70% | 1.52% | 47% | 6.86 px | n/a | 25 | 299 | 187 | 112 | 201 |
+
+From the `_stats.json` of each run. Jitter uses the full available corner trajectory for motion interpolation. Jitter, longest run, tracked and the counts are whole-clip statistics (identical in validation and test rows for a variant); (re)localisations counts actual localiser calls, whereas REINIT/HIDE count monitor flags; drift = median corner error on the row's annotated frames at least 16 frames after the last (re)initialisation (n/a when no track is carried that long: the independent variant reinitialises every frame); longest run = most consecutive frames without a (re)initialisation.
+
 ### Implemented functions
 
 In the `temporal.py` file, `lk_flow` performs iterative sparse Lucas–Kanade updates using the supplied image gradients and bilinear sampling. It returns point displacements, structure-tensor eigenvalues, brightness residuals, and validity flags. `track_board` implements independent reference registration and flow-assisted propagation, refits the homography on propagated correspondences and reinitialises from the reference when tracking loses support or reaches its configured interval. `failure_monitor` applies the ordered model, inlier, residual, corner-motion, flow, and brightness checks and returns `OK`, `REINIT`, or `HIDE` with the triggering statistic. `_put_text` draws into an 8-bit mask and blends into float textures so the synthetic diagnostic runs with OpenCV 5.
@@ -54,12 +72,22 @@ On the **common clip, 640-pixel segment from frames 170–239**, independent reg
 
 In Notebook 2's **common-clip frames 170–171** LK diagnostic, the implementation considered **49** points and accepted **5** as valid, with median flow magnitude **26.99 px** over those valid points. On those same common-clip points, the labelled OpenCV comparison differed from our LK flow by a median of **0.005 px**. The eigenvalue plot marks edge-dominated points with small `lambda_2` as aperture-problem failures; points with adequate texture but large brightness residual are brightness-constancy failures, including points covered by the occluder. Blur weakens local texture and makes flow less reliable across the board.
 
-On the **synthetic illumination stress sequence**, the saved monitor diagnostic first returned `REINIT` for `inlier_ratio` at sequence frame **34**. The combined real clip's stats file is absent so the actual first trigger at its card crossings and fast rotation cannot be claimed from this notebook run. Interpret a crossing by checking `brightness_change` after a low-inlier trigger. It responds to changed pixels on the board, while high `mean_flow` or corner displacement points to rapid motion and tracking drift. The exit-clip stats are also absent, so its observed `HIDE`/`REINIT` sequence remains pending. By design, a lost model is hidden and reference matching can reinitialise once the board re-enters with enough inliers.
+On the **synthetic illumination stress sequence**, the saved monitor diagnostic first returned `REINIT` for `inlier_ratio` at sequence frame **34**. The combined real clip's full-resolution stats are now available in `outputs/videos/coke_unconstrained_flow_assisted_stats.json`; the first triggers around its crossings and fast rotation still need a frame-by-frame monitor-timeline discussion. Interpret a crossing by checking `brightness_change` after a low-inlier trigger. It responds to changed pixels on the board, while high `mean_flow` or corner displacement points to rapid motion and tracking drift. The exit-clip counts are now reported in the generated Stage 2 table; the frame-by-frame `HIDE`/`REINIT` sequence still needs discussion alongside the video. By design, a lost model is hidden and reference matching can reinitialise once the board re-enters with enough inliers.
 
 ## Stage 3 — Composite
 <!-- hysteresis, compensated_difference, occlusion_mask, select_difference_thresholds, composite; frozen difference thresholds; no-occlusion baseline -->
 ### Stress table (Stage 3)
 <!-- generated rows: common · validation / test, combined, viewpoint — mask IoU / F1 / leakage, baseline leakage (common), false occlusion (viewpoint) -->
+
+| row | eligible masks | scored masks | hidden masks | missing masks | overlay absent | IoU | F1 | leakage | baseline leakage | false occlusion |
+|---|---|---|---|---|---|---|---|---|---|---|
+| common · validation | 3 | 3 | 0 | 0 | 0 | 0.915 | 0.956 | 1.52% | 96.25% | n/a |
+| common · test | 3 | 2 | 1 | 0 | 1 | 0.932 | 0.965 | 0.61% | 61.53% | n/a |
+| combined (coke_unconstrained) | 6 | 4 | 2 | 0 | 2 | 0.936 | 0.966 | 0.20% | n/a | n/a |
+| viewpoint (coke_perspective) | 3 | 0 | 2 | 0 | 2 | n/a | n/a | n/a | n/a | 5.49% |
+
+IoU / F1 from the occlusion masks saved by `run_pipeline` on the ground-truth mask frames (frames on which the overlay is hidden are not scored); leakage, baseline leakage and false occlusion from `overlaylab.evaluate` on the finished videos. The viewpoint clip has empty masks: only false occlusion applies.
+
 ### Question 4 — Occlusion
 <!-- which occluders differencing recovers and which stay ambiguous; effect of the strong threshold and the minimum area; why hysteresis matters for thin occluders and why opening works against it (thinnest occluder that survives the frozen open_radius; what the radius buys over radius 0 on the validation masks); why the viewpoint clip produces false occlusion under strong perspective with a correct homography, and which part of the differencing is responsible -->
 
@@ -79,10 +107,11 @@ On the **synthetic illumination stress sequence**, the saved monitor diagnostic 
 | keypoints.py | harris_response, detect_corners, describe_keypoints, match_descriptors | Stage 1 — implemented functions; Question 1 | Notebook 1: Harris/NMS; descriptor/ratio test; matching-rate and SIFT cells |
 | geometry.py | bilinear_sample, normalise_points, dlt_homography, symmetric_transfer_error, ransac_homography, transfer_points, warp_artwork | Stage 1 — implemented functions; Question 2 | Notebook 1: DLT conditioning, RANSAC, and warp-convention sections; Notebook 2: saved viewpoint affine comparison; whole-frame viewpoint warp pending |
 | localisation.py | localise_board, artwork_to_frame, overlay_frame, evaluate_audit_frames | Stage 1 — implemented functions; validation, test, and Question 2 sections | Notebook 2: validation/test metrics and viewpoint affine comparison; viewpoint warp still pending |
-| temporal.py | lk_flow, track_board, failure_monitor | Stage 2 — implemented functions; Question 3 | Notebook 2: common-segment flow/variant metrics and synthetic illumination monitor; combined/exit stats pending |
+| temporal.py | lk_flow, track_board, failure_monitor | Stage 2 — implemented functions; Question 3 | Notebook 2: common-segment flow/variant metrics and synthetic illumination monitor; generated combined/exit statistics available; monitor-timeline discussion pending |
 | compositing.py | hysteresis, compensated_difference, occlusion_mask, select_difference_thresholds, composite | | |
 
 ## AI-use disclosure table
 | Tool / model | Affected artefacts (file, cell, figure, section) | Markers | What the tool contributed | How it was verified |
 |---|---|---|---|---|
 | Codex | `code/overlaylab/keypoints.py`, `code/overlaylab/geometry.py`, `code/overlaylab/localisation.py`, `code/overlaylab/temporal.py`, `code/overlaylab/synthetic.py`, Notebook 2, `code/REPORT.md` Stages 1–2 | [AI-CODE] [AI-LANGUAGE] | Assisted with the listed keypoint, geometry, localisation, tracking, and synthetic text-rendering implementations. Completed Notebook 2 analysis cells | Compared the report with the saved Notebook 1 and Notebook 2 outputs and checked changed Python and notebook cells for syntax. |
+| Codex | `code/student_files/` VACE preprocessing helper, tracker and tests; Notebook 4 audit extraction, mask interpretation, evaluation and reflection; `code/REPORT.md` stress tables | [AI-CODE] [AI-LANGUAGE] | Implemented the separate book tracker and approved board-gap repair, repaired helper packaging, corrected evaluation for visible-white annotations and the selected temporal pair, and assisted with reflection and submission checks. Generated VACE pixels are separately marked [AI-GENERATION]. | 18 custom tests passed; supplied suite ran 82 tests with one skipped; evaluated all eight supplied runs; checked raw-video identity, audit paths and unchanged source annotations. |

@@ -1,0 +1,3118 @@
+{
+  "source_interval": {
+    "start": 120,
+    "end": 269
+  },
+  "video_info": {
+    "frames": 150,
+    "fps": 30.0,
+    "width": 1920,
+    "height": 1080
+  },
+  "input_video": "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/outputs/genai/inputs/interval.mp4",
+  "input_video_sha256": "b9d443b2c93d4425a968946f3ae4eb0e668d05166702995b038160d208fcda00",
+  "predicted_board_masks": "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/outputs/genai/inputs/book_tracking_repaired_v1/board_masks",
+  "original_board_masks": "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/outputs/genai/inputs/masks",
+  "original_board_masks_sha256": "81760287ef767f8d845c346b10477c1592256745e9d867a7075dd0c31201fb0b",
+  "original_empty_board_frames": [
+    124,
+    131,
+    132,
+    133,
+    134,
+    135,
+    136,
+    144,
+    150,
+    151,
+    154,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160,
+    161,
+    162,
+    163,
+    164,
+    165,
+    166,
+    167,
+    168,
+    214,
+    219,
+    220,
+    222,
+    223,
+    232,
+    233,
+    234,
+    235,
+    236,
+    237,
+    238
+  ],
+  "board_repairs": [
+    {
+      "source_frame": 124,
+      "previous_frame": 123,
+      "next_frame": 125,
+      "weight": 0.5,
+      "gap_length": 1,
+      "corners": [
+        [
+          873.8591018370579,
+          277.5013209560708
+        ],
+        [
+          1341.1609698693464,
+          277.07563759757977
+        ],
+        [
+          1333.2846009227258,
+          606.940094061177
+        ],
+        [
+          869.5471677096602,
+          592.1773585704902
+        ]
+      ]
+    },
+    {
+      "source_frame": 131,
+      "previous_frame": 130,
+      "next_frame": 137,
+      "weight": 0.14285714285714285,
+      "gap_length": 6,
+      "corners": [
+        [
+          903.5946960662346,
+          307.4946076280363
+        ],
+        [
+          1375.390969250874,
+          306.75709731976343
+        ],
+        [
+          1365.2223049563556,
+          642.4854305680943
+        ],
+        [
+          891.0757361214418,
+          625.7158807821809
+        ]
+      ]
+    },
+    {
+      "source_frame": 132,
+      "previous_frame": 130,
+      "next_frame": 137,
+      "weight": 0.2857142857142857,
+      "gap_length": 6,
+      "corners": [
+        [
+          904.5982190951474,
+          310.6794030035196
+        ],
+        [
+          1379.4021397901065,
+          309.7643930042392
+        ],
+        [
+          1369.2527118915743,
+          647.2907437999031
+        ],
+        [
+          893.5343293399187,
+          629.809883091562
+        ]
+      ]
+    },
+    {
+      "source_frame": 133,
+      "previous_frame": 130,
+      "next_frame": 137,
+      "weight": 0.42857142857142855,
+      "gap_length": 6,
+      "corners": [
+        [
+          905.6017421240603,
+          313.8641983790028
+        ],
+        [
+          1383.4133103293389,
+          312.7716886887149
+        ],
+        [
+          1373.283118826793,
+          652.0960570317118
+        ],
+        [
+          895.9929225583957,
+          633.9038854009432
+        ]
+      ]
+    },
+    {
+      "source_frame": 134,
+      "previous_frame": 130,
+      "next_frame": 137,
+      "weight": 0.5714285714285714,
+      "gap_length": 6,
+      "corners": [
+        [
+          906.6052651529732,
+          317.04899375448616
+        ],
+        [
+          1387.4244808685717,
+          315.7789843731907
+        ],
+        [
+          1377.313525762012,
+          656.9013702635204
+        ],
+        [
+          898.4515157768728,
+          637.9978877103244
+        ]
+      ]
+    },
+    {
+      "source_frame": 135,
+      "previous_frame": 130,
+      "next_frame": 137,
+      "weight": 0.7142857142857143,
+      "gap_length": 6,
+      "corners": [
+        [
+          907.608788181886,
+          320.2337891299694
+        ],
+        [
+          1391.435651407804,
+          318.78628005766643
+        ],
+        [
+          1381.3439326972307,
+          661.7066834953291
+        ],
+        [
+          900.9101089953499,
+          642.0918900197057
+        ]
+      ]
+    },
+    {
+      "source_frame": 136,
+      "previous_frame": 130,
+      "next_frame": 137,
+      "weight": 0.8571428571428571,
+      "gap_length": 6,
+      "corners": [
+        [
+          908.6123112107989,
+          323.4185845054527
+        ],
+        [
+          1395.4468219470368,
+          321.7935757421422
+        ],
+        [
+          1385.3743396324496,
+          666.5119967271378
+        ],
+        [
+          903.3687022138269,
+          646.1858923290869
+        ]
+      ]
+    },
+    {
+      "source_frame": 144,
+      "previous_frame": 143,
+      "next_frame": 145,
+      "weight": 0.5,
+      "gap_length": 1,
+      "corners": [
+        [
+          790.5104210232562,
+          321.19320354247475
+        ],
+        [
+          1288.3489119258927,
+          323.8579108065684
+        ],
+        [
+          1282.6859829023208,
+          681.2460540277814
+        ],
+        [
+          790.0800286226847,
+          655.978691078076
+        ]
+      ]
+    },
+    {
+      "source_frame": 150,
+      "previous_frame": 149,
+      "next_frame": 152,
+      "weight": 0.3333333333333333,
+      "gap_length": 2,
+      "corners": [
+        [
+          654.4509730899463,
+          331.47753487981225
+        ],
+        [
+          1147.3661568721645,
+          339.0518192116811
+        ],
+        [
+          1150.9260368525174,
+          692.9126653609586
+        ],
+        [
+          659.366186601138,
+          671.3075533146384
+        ]
+      ]
+    },
+    {
+      "source_frame": 151,
+      "previous_frame": 149,
+      "next_frame": 152,
+      "weight": 0.6666666666666666,
+      "gap_length": 2,
+      "corners": [
+        [
+          635.4496612000971,
+          330.8479004670355
+        ],
+        [
+          1128.0120461248562,
+          337.5679287306356
+        ],
+        [
+          1131.7943473951632,
+          695.9802671632552
+        ],
+        [
+          640.224808747998,
+          670.1669828784951
+        ]
+      ]
+    },
+    {
+      "source_frame": 154,
+      "previous_frame": 153,
+      "next_frame": 169,
+      "weight": 0.0625,
+      "gap_length": 15,
+      "corners": [
+        [
+          586.05867617885,
+          323.3597860735712
+        ],
+        [
+          1081.902431514953,
+          331.2812554063541
+        ],
+        [
+          1089.1025501647373,
+          703.3756422369842
+        ],
+        [
+          591.944039208904,
+          668.0825595541917
+        ]
+      ]
+    },
+    {
+      "source_frame": 155,
+      "previous_frame": 153,
+      "next_frame": 169,
+      "weight": 0.125,
+      "gap_length": 15,
+      "corners": [
+        [
+          572.7533582121769,
+          322.1424946973976
+        ],
+        [
+          1071.3437687838355,
+          330.2265255372781
+        ],
+        [
+          1079.9116380886735,
+          705.9714919002497
+        ],
+        [
+          579.4407091496902,
+          669.3940180513341
+        ]
+      ]
+    },
+    {
+      "source_frame": 156,
+      "previous_frame": 153,
+      "next_frame": 169,
+      "weight": 0.1875,
+      "gap_length": 15,
+      "corners": [
+        [
+          559.4480402455039,
+          320.925203321224
+        ],
+        [
+          1060.7851060527182,
+          329.17179566820215
+        ],
+        [
+          1070.7207260126097,
+          708.5673415635151
+        ],
+        [
+          566.9373790904765,
+          670.7054765484766
+        ]
+      ]
+    },
+    {
+      "source_frame": 157,
+      "previous_frame": 153,
+      "next_frame": 169,
+      "weight": 0.25,
+      "gap_length": 15,
+      "corners": [
+        [
+          546.1427222788308,
+          319.7079119450504
+        ],
+        [
+          1050.2264433216008,
+          328.1170657991262
+        ],
+        [
+          1061.5298139365461,
+          711.1631912267807
+        ],
+        [
+          554.4340490312628,
+          672.0169350456189
+        ]
+      ]
+    },
+    {
+      "source_frame": 158,
+      "previous_frame": 153,
+      "next_frame": 169,
+      "weight": 0.3125,
+      "gap_length": 15,
+      "corners": [
+        [
+          532.8374043121578,
+          318.4906205688768
+        ],
+        [
+          1039.6677805904833,
+          327.06233593005027
+        ],
+        [
+          1052.3389018604826,
+          713.7590408900461
+        ],
+        [
+          541.930718972049,
+          673.3283935427612
+        ]
+      ]
+    },
+    {
+      "source_frame": 159,
+      "previous_frame": 153,
+      "next_frame": 169,
+      "weight": 0.375,
+      "gap_length": 15,
+      "corners": [
+        [
+          519.5320863454848,
+          317.2733291927032
+        ],
+        [
+          1029.109117859366,
+          326.0076060609743
+        ],
+        [
+          1043.1479897844188,
+          716.3548905533116
+        ],
+        [
+          529.4273889128353,
+          674.6398520399036
+        ]
+      ]
+    },
+    {
+      "source_frame": 160,
+      "previous_frame": 153,
+      "next_frame": 169,
+      "weight": 0.4375,
+      "gap_length": 15,
+      "corners": [
+        [
+          506.2267683788118,
+          316.0560378165296
+        ],
+        [
+          1018.5504551282486,
+          324.9528761918983
+        ],
+        [
+          1033.957077708355,
+          718.9507402165771
+        ],
+        [
+          516.9240588536215,
+          675.951310537046
+        ]
+      ]
+    },
+    {
+      "source_frame": 161,
+      "previous_frame": 153,
+      "next_frame": 169,
+      "weight": 0.5,
+      "gap_length": 15,
+      "corners": [
+        [
+          492.9214504121387,
+          314.83874644035603
+        ],
+        [
+          1007.9917923971311,
+          323.89814632282236
+        ],
+        [
+          1024.7661656322914,
+          721.5465898798426
+        ],
+        [
+          504.42072879440786,
+          677.2627690341883
+        ]
+      ]
+    },
+    {
+      "source_frame": 162,
+      "previous_frame": 153,
+      "next_frame": 169,
+      "weight": 0.5625,
+      "gap_length": 15,
+      "corners": [
+        [
+          479.6161324454657,
+          313.62145506418244
+        ],
+        [
+          997.4331296660137,
+          322.8434164537464
+        ],
+        [
+          1015.5752535562277,
+          724.1424395431081
+        ],
+        [
+          491.9173987351942,
+          678.5742275313307
+        ]
+      ]
+    },
+    {
+      "source_frame": 163,
+      "previous_frame": 153,
+      "next_frame": 169,
+      "weight": 0.625,
+      "gap_length": 15,
+      "corners": [
+        [
+          466.3108144787927,
+          312.40416368800885
+        ],
+        [
+          986.8744669348963,
+          321.7886865846704
+        ],
+        [
+          1006.384341480164,
+          726.7382892063736
+        ],
+        [
+          479.41406867598045,
+          679.8856860284732
+        ]
+      ]
+    },
+    {
+      "source_frame": 164,
+      "previous_frame": 153,
+      "next_frame": 169,
+      "weight": 0.6875,
+      "gap_length": 15,
+      "corners": [
+        [
+          453.00549651211963,
+          311.18687231183526
+        ],
+        [
+          976.315804203779,
+          320.73395671559445
+        ],
+        [
+          997.1934294041005,
+          729.334138869639
+        ],
+        [
+          466.9107386167667,
+          681.1971445256155
+        ]
+      ]
+    },
+    {
+      "source_frame": 165,
+      "previous_frame": 153,
+      "next_frame": 169,
+      "weight": 0.75,
+      "gap_length": 15,
+      "corners": [
+        [
+          439.70017854544665,
+          309.96958093566167
+        ],
+        [
+          965.7571414726615,
+          319.67922684651853
+        ],
+        [
+          988.0025173280367,
+          731.9299885329045
+        ],
+        [
+          454.407408557553,
+          682.5086030227578
+        ]
+      ]
+    },
+    {
+      "source_frame": 166,
+      "previous_frame": 153,
+      "next_frame": 169,
+      "weight": 0.8125,
+      "gap_length": 15,
+      "corners": [
+        [
+          426.39486057877355,
+          308.7522895594881
+        ],
+        [
+          955.198478741544,
+          318.62449697744256
+        ],
+        [
+          978.8116052519729,
+          734.5258381961701
+        ],
+        [
+          441.9040784983393,
+          683.8200615199003
+        ]
+      ]
+    },
+    {
+      "source_frame": 167,
+      "previous_frame": 153,
+      "next_frame": 169,
+      "weight": 0.875,
+      "gap_length": 15,
+      "corners": [
+        [
+          413.0895426121006,
+          307.5349981833145
+        ],
+        [
+          944.6398160104267,
+          317.5697671083666
+        ],
+        [
+          969.6206931759093,
+          737.1216878594355
+        ],
+        [
+          429.40074843912555,
+          685.1315200170426
+        ]
+      ]
+    },
+    {
+      "source_frame": 168,
+      "previous_frame": 153,
+      "next_frame": 169,
+      "weight": 0.9375,
+      "gap_length": 15,
+      "corners": [
+        [
+          399.78422464542757,
+          306.3177068071409
+        ],
+        [
+          934.0811532793093,
+          316.5150372392906
+        ],
+        [
+          960.4297810998456,
+          739.717537522701
+        ],
+        [
+          416.89741837991187,
+          686.4429785141849
+        ]
+      ]
+    },
+    {
+      "source_frame": 214,
+      "previous_frame": 213,
+      "next_frame": 215,
+      "weight": 0.5,
+      "gap_length": 1,
+      "corners": [
+        [
+          574.253136283334,
+          272.09092142931
+        ],
+        [
+          1133.400987586443,
+          288.8142117378434
+        ],
+        [
+          1148.107618618239,
+          759.0894565770064
+        ],
+        [
+          599.0234933281126,
+          670.9529058968603
+        ]
+      ]
+    },
+    {
+      "source_frame": 219,
+      "previous_frame": 218,
+      "next_frame": 221,
+      "weight": 0.3333333333333333,
+      "gap_length": 2,
+      "corners": [
+        [
+          639.1470919311166,
+          275.8989994007137
+        ],
+        [
+          1204.6857134050865,
+          304.353429225583
+        ],
+        [
+          1215.8480648925627,
+          766.4897653943215
+        ],
+        [
+          659.8558032246705,
+          684.3652973573423
+        ]
+      ]
+    },
+    {
+      "source_frame": 220,
+      "previous_frame": 218,
+      "next_frame": 221,
+      "weight": 0.6666666666666666,
+      "gap_length": 2,
+      "corners": [
+        [
+          655.8115584558935,
+          279.47281316226866
+        ],
+        [
+          1223.1630360641548,
+          307.1333377596532
+        ],
+        [
+          1231.3837863531107,
+          776.3688164008012
+        ],
+        [
+          672.9267672846333,
+          689.1439891765326
+        ]
+      ]
+    },
+    {
+      "source_frame": 222,
+      "previous_frame": 221,
+      "next_frame": 224,
+      "weight": 0.3333333333333333,
+      "gap_length": 2,
+      "corners": [
+        [
+          684.8285941855429,
+          290.1226263440314
+        ],
+        [
+          1257.7869306764708,
+          315.67354633173045
+        ],
+        [
+          1268.2289018187266,
+          791.662125903817
+        ],
+        [
+          699.2217321697636,
+          699.2864354197391
+        ]
+      ]
+    },
+    {
+      "source_frame": 223,
+      "previous_frame": 221,
+      "next_frame": 224,
+      "weight": 0.6666666666666666,
+      "gap_length": 2,
+      "corners": [
+        [
+          697.1811633904152,
+          297.1986257642391
+        ],
+        [
+          1273.9335026297188,
+          321.43384636973747
+        ],
+        [
+          1289.538295823794,
+          797.0763844003529
+        ],
+        [
+          712.4457329949311,
+          704.6501898437552
+        ]
+      ]
+    },
+    {
+      "source_frame": 232,
+      "previous_frame": 231,
+      "next_frame": 239,
+      "weight": 0.125,
+      "gap_length": 7,
+      "corners": [
+        [
+          789.1742122748979,
+          345.9146232472231
+        ],
+        [
+          1412.6113810078941,
+          368.4974283265085
+        ],
+        [
+          1411.2626053514905,
+          864.3533130786955
+        ],
+        [
+          804.4294661788622,
+          754.7560830073201
+        ]
+      ]
+    },
+    {
+      "source_frame": 233,
+      "previous_frame": 231,
+      "next_frame": 239,
+      "weight": 0.25,
+      "gap_length": 7,
+      "corners": [
+        [
+          792.3387819505325,
+          354.2754751320557
+        ],
+        [
+          1415.931294515244,
+          379.15419288182375
+        ],
+        [
+          1414.3800427597935,
+          875.0184389672991
+        ],
+        [
+          805.7274873158096,
+          763.7537601381197
+        ]
+      ]
+    },
+    {
+      "source_frame": 234,
+      "previous_frame": 231,
+      "next_frame": 239,
+      "weight": 0.375,
+      "gap_length": 7,
+      "corners": [
+        [
+          795.503351626167,
+          362.63632701688823
+        ],
+        [
+          1419.2512080225943,
+          389.8109574371389
+        ],
+        [
+          1417.4974801680964,
+          885.6835648559027
+        ],
+        [
+          807.0255084527571,
+          772.7514372689195
+        ]
+      ]
+    },
+    {
+      "source_frame": 235,
+      "previous_frame": 231,
+      "next_frame": 239,
+      "weight": 0.5,
+      "gap_length": 7,
+      "corners": [
+        [
+          798.6679213018017,
+          370.99717890172076
+        ],
+        [
+          1422.5711215299443,
+          400.46772199245413
+        ],
+        [
+          1420.6149175763996,
+          896.3486907445064
+        ],
+        [
+          808.3235295897043,
+          781.7491143997192
+        ]
+      ]
+    },
+    {
+      "source_frame": 236,
+      "previous_frame": 231,
+      "next_frame": 239,
+      "weight": 0.625,
+      "gap_length": 7,
+      "corners": [
+        [
+          801.8324909774362,
+          379.3580307865533
+        ],
+        [
+          1425.8910350372944,
+          411.1244865477694
+        ],
+        [
+          1423.7323549847029,
+          907.01381663311
+        ],
+        [
+          809.6215507266518,
+          790.7467915305189
+        ]
+      ]
+    },
+    {
+      "source_frame": 237,
+      "previous_frame": 231,
+      "next_frame": 239,
+      "weight": 0.75,
+      "gap_length": 7,
+      "corners": [
+        [
+          804.9970606530708,
+          387.7188826713858
+        ],
+        [
+          1429.2109485446447,
+          421.7812511030845
+        ],
+        [
+          1426.8497923930056,
+          917.6789425217137
+        ],
+        [
+          810.9195718635992,
+          799.7444686613187
+        ]
+      ]
+    },
+    {
+      "source_frame": 238,
+      "previous_frame": 231,
+      "next_frame": 239,
+      "weight": 0.875,
+      "gap_length": 7,
+      "corners": [
+        [
+          808.1616303287054,
+          396.0797345562184
+        ],
+        [
+          1432.5308620519945,
+          432.43801565839976
+        ],
+        [
+          1429.9672298013088,
+          928.3440684103173
+        ],
+        [
+          812.2175930005466,
+          808.7421457921183
+        ]
+      ]
+    }
+  ],
+  "tracking_stats_sha256": "14d952b00474678595655e3e0b10821357ccbd8605047c7a9f255c6e79863562",
+  "tracker_config": {
+    "working_width": 960,
+    "minimum_area_fraction": 0.003,
+    "minimum_outside_fraction": 0.1,
+    "blue_green_ratio": 1.1,
+    "green_red_ratio": 1.1,
+    "blue_red_difference": 15.0,
+    "maximum_blue": 160.0,
+    "line_tolerance": 2.5,
+    "line_support": 0.65,
+    "geometry_iou": 0.9,
+    "padding_at_model_height": 2.0,
+    "model_height": 480
+  },
+  "audit_annotations_used_for_preparation": false,
+  "versions": {
+    "opencv": "5.0.0",
+    "numpy": "2.0.2"
+  },
+  "implementation_sha256": {
+    "prepare_vace_inputs.py": "5da4cee4bd35468dedc8e3e8bb42260e5714cadc15e59d306cd9ce0973f60c99",
+    "book_tracking.py": "60171c3cb58cb024bfa533e16e7a4514c7137813fd5fd5ef3c5e9d169de1d75e"
+  },
+  "formula": "editable = predicted_board & ~dilate(predicted_book); gray-fill editable with 127",
+  "note": "Dedicated extra preprocessing; the classical pipeline and its frozen thresholds are unchanged.",
+  "padding_source_pixels": 5,
+  "frames": [
+    {
+      "source_frame": 120,
+      "input_frame": 0,
+      "board_pixels": 150361,
+      "editable_pixels": 150361,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 121,
+      "input_frame": 1,
+      "board_pixels": 150086,
+      "editable_pixels": 150086,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 122,
+      "input_frame": 2,
+      "board_pixels": 152367,
+      "editable_pixels": 152367,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 123,
+      "input_frame": 3,
+      "board_pixels": 150480,
+      "editable_pixels": 150480,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 124,
+      "input_frame": 4,
+      "board_pixels": 150560,
+      "editable_pixels": 150560,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 125,
+      "input_frame": 5,
+      "board_pixels": 151198,
+      "editable_pixels": 151198,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 126,
+      "input_frame": 6,
+      "board_pixels": 152561,
+      "editable_pixels": 152561,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 127,
+      "input_frame": 7,
+      "board_pixels": 160757,
+      "editable_pixels": 160757,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 128,
+      "input_frame": 8,
+      "board_pixels": 154329,
+      "editable_pixels": 154329,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 129,
+      "input_frame": 9,
+      "board_pixels": 151913,
+      "editable_pixels": 151913,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 130,
+      "input_frame": 10,
+      "board_pixels": 154113,
+      "editable_pixels": 154113,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 131,
+      "input_frame": 11,
+      "board_pixels": 155400,
+      "editable_pixels": 155400,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 132,
+      "input_frame": 12,
+      "board_pixels": 156523,
+      "editable_pixels": 156523,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 133,
+      "input_frame": 13,
+      "board_pixels": 158069,
+      "editable_pixels": 158069,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 134,
+      "input_frame": 14,
+      "board_pixels": 159611,
+      "editable_pixels": 159611,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 135,
+      "input_frame": 15,
+      "board_pixels": 160988,
+      "editable_pixels": 160988,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 136,
+      "input_frame": 16,
+      "board_pixels": 162554,
+      "editable_pixels": 162554,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 137,
+      "input_frame": 17,
+      "board_pixels": 163455,
+      "editable_pixels": 163455,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 138,
+      "input_frame": 18,
+      "board_pixels": 167629,
+      "editable_pixels": 167629,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 139,
+      "input_frame": 19,
+      "board_pixels": 169901,
+      "editable_pixels": 169901,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 140,
+      "input_frame": 20,
+      "board_pixels": 166950,
+      "editable_pixels": 166950,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 141,
+      "input_frame": 21,
+      "board_pixels": 169673,
+      "editable_pixels": 169673,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 142,
+      "input_frame": 22,
+      "board_pixels": 170352,
+      "editable_pixels": 170352,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 143,
+      "input_frame": 23,
+      "board_pixels": 171640,
+      "editable_pixels": 171640,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 144,
+      "input_frame": 24,
+      "board_pixels": 172154,
+      "editable_pixels": 172154,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 145,
+      "input_frame": 25,
+      "board_pixels": 172922,
+      "editable_pixels": 172922,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 146,
+      "input_frame": 26,
+      "board_pixels": 173332,
+      "editable_pixels": 173332,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 147,
+      "input_frame": 27,
+      "board_pixels": 172874,
+      "editable_pixels": 172874,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 148,
+      "input_frame": 28,
+      "board_pixels": 173138,
+      "editable_pixels": 173138,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 149,
+      "input_frame": 29,
+      "board_pixels": 170445,
+      "editable_pixels": 170445,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 150,
+      "input_frame": 30,
+      "board_pixels": 171672,
+      "editable_pixels": 171672,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 151,
+      "input_frame": 31,
+      "board_pixels": 172403,
+      "editable_pixels": 172403,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 152,
+      "input_frame": 32,
+      "board_pixels": 173628,
+      "editable_pixels": 173628,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 153,
+      "input_frame": 33,
+      "board_pixels": 176177,
+      "editable_pixels": 176177,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 154,
+      "input_frame": 34,
+      "board_pixels": 178715,
+      "editable_pixels": 178715,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 155,
+      "input_frame": 35,
+      "board_pixels": 181262,
+      "editable_pixels": 181262,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 156,
+      "input_frame": 36,
+      "board_pixels": 184251,
+      "editable_pixels": 184251,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 157,
+      "input_frame": 37,
+      "board_pixels": 186598,
+      "editable_pixels": 186598,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 158,
+      "input_frame": 38,
+      "board_pixels": 189271,
+      "editable_pixels": 189271,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 159,
+      "input_frame": 39,
+      "board_pixels": 191900,
+      "editable_pixels": 191900,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 160,
+      "input_frame": 40,
+      "board_pixels": 194710,
+      "editable_pixels": 194710,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 161,
+      "input_frame": 41,
+      "board_pixels": 197361,
+      "editable_pixels": 197361,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 162,
+      "input_frame": 42,
+      "board_pixels": 199837,
+      "editable_pixels": 199837,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 163,
+      "input_frame": 43,
+      "board_pixels": 202982,
+      "editable_pixels": 202982,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 164,
+      "input_frame": 44,
+      "board_pixels": 205216,
+      "editable_pixels": 205216,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 165,
+      "input_frame": 45,
+      "board_pixels": 208416,
+      "editable_pixels": 208416,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 166,
+      "input_frame": 46,
+      "board_pixels": 211117,
+      "editable_pixels": 211117,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 167,
+      "input_frame": 47,
+      "board_pixels": 213828,
+      "editable_pixels": 213828,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 168,
+      "input_frame": 48,
+      "board_pixels": 216451,
+      "editable_pixels": 216451,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 169,
+      "input_frame": 49,
+      "board_pixels": 219941,
+      "editable_pixels": 219941,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 170,
+      "input_frame": 50,
+      "board_pixels": 222263,
+      "editable_pixels": 222263,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 171,
+      "input_frame": 51,
+      "board_pixels": 226450,
+      "editable_pixels": 226450,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 172,
+      "input_frame": 52,
+      "board_pixels": 226833,
+      "editable_pixels": 226833,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 173,
+      "input_frame": 53,
+      "board_pixels": 232302,
+      "editable_pixels": 232302,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 174,
+      "input_frame": 54,
+      "board_pixels": 233176,
+      "editable_pixels": 233176,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 175,
+      "input_frame": 55,
+      "board_pixels": 241663,
+      "editable_pixels": 241663,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 176,
+      "input_frame": 56,
+      "board_pixels": 245276,
+      "editable_pixels": 245276,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 177,
+      "input_frame": 57,
+      "board_pixels": 249351,
+      "editable_pixels": 249351,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 178,
+      "input_frame": 58,
+      "board_pixels": 252248,
+      "editable_pixels": 252248,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 179,
+      "input_frame": 59,
+      "board_pixels": 255806,
+      "editable_pixels": 255806,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 180,
+      "input_frame": 60,
+      "board_pixels": 259984,
+      "editable_pixels": 259984,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 181,
+      "input_frame": 61,
+      "board_pixels": 265511,
+      "editable_pixels": 265511,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 182,
+      "input_frame": 62,
+      "board_pixels": 269501,
+      "editable_pixels": 269501,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 183,
+      "input_frame": 63,
+      "board_pixels": 268787,
+      "editable_pixels": 268787,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 184,
+      "input_frame": 64,
+      "board_pixels": 270204,
+      "editable_pixels": 270204,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 185,
+      "input_frame": 65,
+      "board_pixels": 270975,
+      "editable_pixels": 270975,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 186,
+      "input_frame": 66,
+      "board_pixels": 272905,
+      "editable_pixels": 272905,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 187,
+      "input_frame": 67,
+      "board_pixels": 272104,
+      "editable_pixels": 272104,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 188,
+      "input_frame": 68,
+      "board_pixels": 270305,
+      "editable_pixels": 270305,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 189,
+      "input_frame": 69,
+      "board_pixels": 271974,
+      "editable_pixels": 271974,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 190,
+      "input_frame": 70,
+      "board_pixels": 271766,
+      "editable_pixels": 271766,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 191,
+      "input_frame": 71,
+      "board_pixels": 270738,
+      "editable_pixels": 270738,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 192,
+      "input_frame": 72,
+      "board_pixels": 268688,
+      "editable_pixels": 268688,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 193,
+      "input_frame": 73,
+      "board_pixels": 267213,
+      "editable_pixels": 267213,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 194,
+      "input_frame": 74,
+      "board_pixels": 265678,
+      "editable_pixels": 265678,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 195,
+      "input_frame": 75,
+      "board_pixels": 263646,
+      "editable_pixels": 263646,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 196,
+      "input_frame": 76,
+      "board_pixels": 261380,
+      "editable_pixels": 261380,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 197,
+      "input_frame": 77,
+      "board_pixels": 259063,
+      "editable_pixels": 259063,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 198,
+      "input_frame": 78,
+      "board_pixels": 255547,
+      "editable_pixels": 255547,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 199,
+      "input_frame": 79,
+      "board_pixels": 252927,
+      "editable_pixels": 252927,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 200,
+      "input_frame": 80,
+      "board_pixels": 249447,
+      "editable_pixels": 249447,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 201,
+      "input_frame": 81,
+      "board_pixels": 247493,
+      "editable_pixels": 247493,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 202,
+      "input_frame": 82,
+      "board_pixels": 245167,
+      "editable_pixels": 245167,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 203,
+      "input_frame": 83,
+      "board_pixels": 242842,
+      "editable_pixels": 242842,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 204,
+      "input_frame": 84,
+      "board_pixels": 239898,
+      "editable_pixels": 239898,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 205,
+      "input_frame": 85,
+      "board_pixels": 238418,
+      "editable_pixels": 238418,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 206,
+      "input_frame": 86,
+      "board_pixels": 237719,
+      "editable_pixels": 237719,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 207,
+      "input_frame": 87,
+      "board_pixels": 238400,
+      "editable_pixels": 238400,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 208,
+      "input_frame": 88,
+      "board_pixels": 236875,
+      "editable_pixels": 236875,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 209,
+      "input_frame": 89,
+      "board_pixels": 237597,
+      "editable_pixels": 237597,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 210,
+      "input_frame": 90,
+      "board_pixels": 235850,
+      "editable_pixels": 235850,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 211,
+      "input_frame": 91,
+      "board_pixels": 239937,
+      "editable_pixels": 239937,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 212,
+      "input_frame": 92,
+      "board_pixels": 238731,
+      "editable_pixels": 238731,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 213,
+      "input_frame": 93,
+      "board_pixels": 237242,
+      "editable_pixels": 237242,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 214,
+      "input_frame": 94,
+      "board_pixels": 240650,
+      "editable_pixels": 240650,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 215,
+      "input_frame": 95,
+      "board_pixels": 244162,
+      "editable_pixels": 244162,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 216,
+      "input_frame": 96,
+      "board_pixels": 241738,
+      "editable_pixels": 241738,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 217,
+      "input_frame": 97,
+      "board_pixels": 243249,
+      "editable_pixels": 243249,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 218,
+      "input_frame": 98,
+      "board_pixels": 240944,
+      "editable_pixels": 240944,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 219,
+      "input_frame": 99,
+      "board_pixels": 244147,
+      "editable_pixels": 244147,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 220,
+      "input_frame": 100,
+      "board_pixels": 247502,
+      "editable_pixels": 247502,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 221,
+      "input_frame": 101,
+      "board_pixels": 251245,
+      "editable_pixels": 251245,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 222,
+      "input_frame": 102,
+      "board_pixels": 252967,
+      "editable_pixels": 252967,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 223,
+      "input_frame": 103,
+      "board_pixels": 255378,
+      "editable_pixels": 255378,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 224,
+      "input_frame": 104,
+      "board_pixels": 256552,
+      "editable_pixels": 256552,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 225,
+      "input_frame": 105,
+      "board_pixels": 259925,
+      "editable_pixels": 259925,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 226,
+      "input_frame": 106,
+      "board_pixels": 269608,
+      "editable_pixels": 269608,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 227,
+      "input_frame": 107,
+      "board_pixels": 265123,
+      "editable_pixels": 265123,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 228,
+      "input_frame": 108,
+      "board_pixels": 266073,
+      "editable_pixels": 266073,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 229,
+      "input_frame": 109,
+      "board_pixels": 277216,
+      "editable_pixels": 277216,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 230,
+      "input_frame": 110,
+      "board_pixels": 274332,
+      "editable_pixels": 274332,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 231,
+      "input_frame": 111,
+      "board_pixels": 278091,
+      "editable_pixels": 278091,
+      "board_repaired": false,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 232,
+      "input_frame": 112,
+      "board_pixels": 279157,
+      "editable_pixels": 279157,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 233,
+      "input_frame": 113,
+      "board_pixels": 279709,
+      "editable_pixels": 279709,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 234,
+      "input_frame": 114,
+      "board_pixels": 280029,
+      "editable_pixels": 280029,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 235,
+      "input_frame": 115,
+      "board_pixels": 281312,
+      "editable_pixels": 281312,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 236,
+      "input_frame": 116,
+      "board_pixels": 281877,
+      "editable_pixels": 281877,
+      "board_repaired": true,
+      "book_present": false,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 0
+    },
+    {
+      "source_frame": 237,
+      "input_frame": 117,
+      "board_pixels": 282403,
+      "editable_pixels": 282403,
+      "board_repaired": true,
+      "book_present": true,
+      "motion_points": 0,
+      "geometry_used": false,
+      "seed_area_working": 4679,
+      "colour_centre_lab": [
+        58.0,
+        130.0,
+        112.0
+      ],
+      "colour_spread_lab": [
+        6.0,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.0,
+      "right_support": 0.0,
+      "book_pixels": 20756
+    },
+    {
+      "source_frame": 238,
+      "input_frame": 118,
+      "board_pixels": 283509,
+      "editable_pixels": 283509,
+      "board_repaired": true,
+      "book_present": true,
+      "motion_points": 6,
+      "geometry_used": true,
+      "seed_area_working": 17404,
+      "colour_centre_lab": [
+        52.0,
+        131.0,
+        110.0
+      ],
+      "colour_spread_lab": [
+        7.413000106811523,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.8148148148148148,
+      "right_support": 0.9733333333333334,
+      "geometry_iou": 0.9696034995233022,
+      "book_pixels": 69888
+    },
+    {
+      "source_frame": 239,
+      "input_frame": 119,
+      "board_pixels": 284089,
+      "editable_pixels": 284089,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 6,
+      "geometry_used": true,
+      "seed_area_working": 30066,
+      "colour_centre_lab": [
+        50.0,
+        131.0,
+        110.0
+      ],
+      "colour_spread_lab": [
+        7.413000106811523,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.7342465753424657,
+      "right_support": 0.9904761904761905,
+      "geometry_iou": 0.9717326129212928,
+      "book_pixels": 118404
+    },
+    {
+      "source_frame": 240,
+      "input_frame": 120,
+      "board_pixels": 283734,
+      "editable_pixels": 283734,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 3,
+      "geometry_used": true,
+      "seed_area_working": 41444,
+      "colour_centre_lab": [
+        48.0,
+        131.0,
+        110.0
+      ],
+      "colour_spread_lab": [
+        10.378199577331543,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.7591623036649214,
+      "right_support": 1.0,
+      "geometry_iou": 0.9817094953440186,
+      "book_pixels": 165312
+    },
+    {
+      "source_frame": 241,
+      "input_frame": 121,
+      "board_pixels": 281556,
+      "editable_pixels": 281556,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 6,
+      "geometry_used": true,
+      "seed_area_working": 53059,
+      "colour_centre_lab": [
+        46.0,
+        131.0,
+        110.0
+      ],
+      "colour_spread_lab": [
+        8.895599365234375,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.7688442211055276,
+      "right_support": 0.993421052631579,
+      "geometry_iou": 0.9865294667913939,
+      "book_pixels": 211232
+    },
+    {
+      "source_frame": 242,
+      "input_frame": 122,
+      "board_pixels": 280618,
+      "editable_pixels": 280117,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 4,
+      "geometry_used": true,
+      "seed_area_working": 65272,
+      "colour_centre_lab": [
+        45.0,
+        132.0,
+        110.0
+      ],
+      "colour_spread_lab": [
+        8.895599365234375,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.7828162291169452,
+      "right_support": 0.7074468085106383,
+      "geometry_iou": 0.981413147464808,
+      "book_pixels": 259060
+    },
+    {
+      "source_frame": 243,
+      "input_frame": 123,
+      "board_pixels": 281174,
+      "editable_pixels": 273113,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 4,
+      "geometry_used": true,
+      "seed_area_working": 77484,
+      "colour_centre_lab": [
+        42.0,
+        132.0,
+        110.0
+      ],
+      "colour_spread_lab": [
+        10.378199577331543,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.8072562358276644,
+      "right_support": 0.8105263157894737,
+      "geometry_iou": 0.9876486264862648,
+      "book_pixels": 308980
+    },
+    {
+      "source_frame": 244,
+      "input_frame": 124,
+      "board_pixels": 281790,
+      "editable_pixels": 260605,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 6,
+      "geometry_used": true,
+      "seed_area_working": 90650,
+      "colour_centre_lab": [
+        40.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        10.378199577331543,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.7789473684210526,
+      "right_support": 0.7619047619047619,
+      "geometry_iou": 0.9855536492880638,
+      "book_pixels": 361856
+    },
+    {
+      "source_frame": 245,
+      "input_frame": 125,
+      "board_pixels": 285219,
+      "editable_pixels": 247995,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 2,
+      "geometry_used": true,
+      "seed_area_working": 103042,
+      "colour_centre_lab": [
+        39.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        10.378199577331543,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.8136272545090181,
+      "right_support": 0.6872427983539094,
+      "geometry_iou": 0.9882220490170607,
+      "book_pixels": 411476
+    },
+    {
+      "source_frame": 246,
+      "input_frame": 126,
+      "board_pixels": 289579,
+      "editable_pixels": 233153,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 3,
+      "geometry_used": false,
+      "seed_area_working": 113007,
+      "colour_centre_lab": [
+        38.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        8.895599365234375,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.0,
+      "right_support": 0.0,
+      "book_pixels": 454308
+    },
+    {
+      "source_frame": 247,
+      "input_frame": 127,
+      "board_pixels": 292405,
+      "editable_pixels": 217711,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 6,
+      "geometry_used": true,
+      "seed_area_working": 122884,
+      "colour_centre_lab": [
+        38.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        10.378199577331543,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.8296703296703297,
+      "right_support": 0.746938775510204,
+      "geometry_iou": 0.990570154174343,
+      "book_pixels": 492236
+    },
+    {
+      "source_frame": 248,
+      "input_frame": 128,
+      "board_pixels": 285131,
+      "editable_pixels": 192899,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 1,
+      "geometry_used": false,
+      "seed_area_working": 132473,
+      "colour_centre_lab": [
+        38.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        8.895599365234375,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.0,
+      "right_support": 0.0,
+      "book_pixels": 531620
+    },
+    {
+      "source_frame": 249,
+      "input_frame": 129,
+      "board_pixels": 269915,
+      "editable_pixels": 178989,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 9,
+      "geometry_used": true,
+      "seed_area_working": 139626,
+      "colour_centre_lab": [
+        37.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        8.895599365234375,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.8718381112984823,
+      "right_support": 0.7350746268656716,
+      "geometry_iou": 0.9929161915621437,
+      "book_pixels": 558524
+    },
+    {
+      "source_frame": 250,
+      "input_frame": 130,
+      "board_pixels": 267167,
+      "editable_pixels": 160516,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 4,
+      "geometry_used": true,
+      "seed_area_working": 146973,
+      "colour_centre_lab": [
+        36.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        8.895599365234375,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.8655737704918033,
+      "right_support": 0.7347670250896058,
+      "geometry_iou": 0.9920827186726034,
+      "book_pixels": 588048
+    },
+    {
+      "source_frame": 251,
+      "input_frame": 131,
+      "board_pixels": 276371,
+      "editable_pixels": 146802,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 5,
+      "geometry_used": true,
+      "seed_area_working": 155936,
+      "colour_centre_lab": [
+        35.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        10.378199577331543,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.819047619047619,
+      "right_support": 0.6689419795221843,
+      "geometry_iou": 0.9888181563034215,
+      "book_pixels": 621508
+    },
+    {
+      "source_frame": 252,
+      "input_frame": 132,
+      "board_pixels": 333742,
+      "editable_pixels": 144864,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 6,
+      "geometry_used": false,
+      "seed_area_working": 164735,
+      "colour_centre_lab": [
+        33.0,
+        133.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        10.378199577331543,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.0,
+      "right_support": 0.0,
+      "book_pixels": 661788
+    },
+    {
+      "source_frame": 253,
+      "input_frame": 133,
+      "board_pixels": 228515,
+      "editable_pixels": 100276,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 12,
+      "geometry_used": false,
+      "seed_area_working": 170563,
+      "colour_centre_lab": [
+        35.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        10.378199577331543,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.0,
+      "right_support": 0.0,
+      "book_pixels": 684256
+    },
+    {
+      "source_frame": 254,
+      "input_frame": 134,
+      "board_pixels": 279688,
+      "editable_pixels": 101511,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 20,
+      "geometry_used": false,
+      "seed_area_working": 174524,
+      "colour_centre_lab": [
+        33.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        10.378199577331543,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.0,
+      "right_support": 0.0,
+      "book_pixels": 700344
+    },
+    {
+      "source_frame": 255,
+      "input_frame": 135,
+      "board_pixels": 269826,
+      "editable_pixels": 111621,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 16,
+      "geometry_used": true,
+      "seed_area_working": 173642,
+      "colour_centre_lab": [
+        33.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        10.378199577331543,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.8745980707395499,
+      "right_support": 0.6697530864197531,
+      "geometry_iou": 0.984209530471478,
+      "book_pixels": 688012
+    },
+    {
+      "source_frame": 256,
+      "input_frame": 136,
+      "board_pixels": 277228,
+      "editable_pixels": 113943,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 9,
+      "geometry_used": false,
+      "seed_area_working": 169649,
+      "colour_centre_lab": [
+        33.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        10.378199577331543,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.0,
+      "right_support": 0.0,
+      "book_pixels": 680504
+    },
+    {
+      "source_frame": 257,
+      "input_frame": 137,
+      "board_pixels": 285049,
+      "editable_pixels": 130797,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 13,
+      "geometry_used": true,
+      "seed_area_working": 163023,
+      "colour_centre_lab": [
+        33.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        10.378199577331543,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.8344827586206897,
+      "right_support": 0.7421383647798742,
+      "geometry_iou": 0.9908842964617158,
+      "book_pixels": 651536
+    },
+    {
+      "source_frame": 258,
+      "input_frame": 138,
+      "board_pixels": 244301,
+      "editable_pixels": 128175,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 6,
+      "geometry_used": true,
+      "seed_area_working": 155104,
+      "colour_centre_lab": [
+        36.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        8.895599365234375,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.8275261324041812,
+      "right_support": 0.6935483870967742,
+      "geometry_iou": 0.9913711743292436,
+      "book_pixels": 618972
+    },
+    {
+      "source_frame": 259,
+      "input_frame": 139,
+      "board_pixels": 244975,
+      "editable_pixels": 140716,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 5,
+      "geometry_used": true,
+      "seed_area_working": 147955,
+      "colour_centre_lab": [
+        38.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        8.895599365234375,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.8272251308900523,
+      "right_support": 0.6644518272425249,
+      "geometry_iou": 0.9884303194281792,
+      "book_pixels": 588896
+    },
+    {
+      "source_frame": 260,
+      "input_frame": 140,
+      "board_pixels": 243587,
+      "editable_pixels": 152003,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 6,
+      "geometry_used": true,
+      "seed_area_working": 141053,
+      "colour_centre_lab": [
+        38.0,
+        133.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        8.895599365234375,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.833916083916084,
+      "right_support": 0.6825938566552902,
+      "geometry_iou": 0.986848971187612,
+      "book_pixels": 560940
+    },
+    {
+      "source_frame": 261,
+      "input_frame": 141,
+      "board_pixels": 242997,
+      "editable_pixels": 162342,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 6,
+      "geometry_used": true,
+      "seed_area_working": 133472,
+      "colour_centre_lab": [
+        39.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        10.378199577331543,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.9165120593692022,
+      "right_support": 0.7587412587412588,
+      "geometry_iou": 0.9944720552348074,
+      "book_pixels": 535944
+    },
+    {
+      "source_frame": 262,
+      "input_frame": 142,
+      "board_pixels": 243332,
+      "editable_pixels": 172356,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 5,
+      "geometry_used": true,
+      "seed_area_working": 127239,
+      "colour_centre_lab": [
+        39.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        10.378199577331543,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.928436911487759,
+      "right_support": 0.697508896797153,
+      "geometry_iou": 0.9943242505749815,
+      "book_pixels": 511572
+    },
+    {
+      "source_frame": 263,
+      "input_frame": 143,
+      "board_pixels": 242610,
+      "editable_pixels": 182000,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 6,
+      "geometry_used": true,
+      "seed_area_working": 121929,
+      "colour_centre_lab": [
+        40.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        10.378199577331543,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.9196940726577438,
+      "right_support": 0.7148014440433214,
+      "geometry_iou": 0.9947787697119771,
+      "book_pixels": 489560
+    },
+    {
+      "source_frame": 264,
+      "input_frame": 144,
+      "board_pixels": 240872,
+      "editable_pixels": 187708,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 4,
+      "geometry_used": false,
+      "seed_area_working": 117246,
+      "colour_centre_lab": [
+        40.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        10.378199577331543,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.0,
+      "right_support": 0.0,
+      "book_pixels": 471808
+    },
+    {
+      "source_frame": 265,
+      "input_frame": 145,
+      "board_pixels": 239654,
+      "editable_pixels": 194730,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 8,
+      "geometry_used": false,
+      "seed_area_working": 112296,
+      "colour_centre_lab": [
+        41.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        10.378199577331543,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.0,
+      "right_support": 0.0,
+      "book_pixels": 451636
+    },
+    {
+      "source_frame": 266,
+      "input_frame": 146,
+      "board_pixels": 239205,
+      "editable_pixels": 202352,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 9,
+      "geometry_used": false,
+      "seed_area_working": 106801,
+      "colour_centre_lab": [
+        42.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        10.378199577331543,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.0,
+      "right_support": 0.0,
+      "book_pixels": 430240
+    },
+    {
+      "source_frame": 267,
+      "input_frame": 147,
+      "board_pixels": 239101,
+      "editable_pixels": 213145,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 13,
+      "geometry_used": false,
+      "seed_area_working": 100519,
+      "colour_centre_lab": [
+        43.0,
+        132.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        10.378199577331543,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.0,
+      "right_support": 0.0,
+      "book_pixels": 405112
+    },
+    {
+      "source_frame": 268,
+      "input_frame": 148,
+      "board_pixels": 237657,
+      "editable_pixels": 221454,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 2,
+      "geometry_used": false,
+      "seed_area_working": 94679,
+      "colour_centre_lab": [
+        44.0,
+        131.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        8.895599365234375,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.0,
+      "right_support": 0.0,
+      "book_pixels": 380868
+    },
+    {
+      "source_frame": 269,
+      "input_frame": 149,
+      "board_pixels": 236967,
+      "editable_pixels": 225560,
+      "board_repaired": false,
+      "book_present": true,
+      "motion_points": 7,
+      "geometry_used": false,
+      "seed_area_working": 89819,
+      "colour_centre_lab": [
+        46.0,
+        131.0,
+        109.0
+      ],
+      "colour_spread_lab": [
+        10.378199577331543,
+        3.0,
+        3.0
+      ],
+      "top_support": 0.0,
+      "right_support": 0.0,
+      "book_pixels": 361420
+    }
+  ],
+  "board_masks_sha256": "9de92bb4df6ed880f761231835566ce5197c73fa6f58d0a5190263d061cb190a",
+  "outputs_sha256": {
+    "interval_inpaint.mp4": "9fdc7c8d4916a153f5a0c42a9797c9c3d26a9a0855f0c4cf5989a6484027f6ab",
+    "src_mask.mp4": "129705d89b9d831911fb07d27f74a181294c75a916d7b061515d9f748d094039",
+    "preview.mp4": "ad8fef6b24ffdab34aff2ee1d72c6dea2379ac80d9d527a98c1d961cd74a6047"
+  },
+  "complete": true
+}

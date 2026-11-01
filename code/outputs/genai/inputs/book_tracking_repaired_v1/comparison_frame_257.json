@@ -1,0 +1,14 @@
+{
+  "source_frame": 257,
+  "audit_mask_kind": "visible",
+  "audit_files_modified": false,
+  "previous_frozen_difference": {
+    "book_pixels_excluded_fraction": 0.40620512854136204,
+    "visible_poster_editable_fraction": 0.9553223388305847
+  },
+  "dedicated_book_tracker": {
+    "book_pixels_excluded_fraction": 0.9863951376549807,
+    "visible_poster_editable_fraction": 0.963685724705215
+  },
+  "previous_4_2_percent_claim": "Invalid: audit visible-poster mask was incorrectly interpreted as an occluder mask."
+}

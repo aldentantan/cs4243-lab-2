@@ -1,0 +1,21 @@
+classical_independent Evaluation of 5 frames in /Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/outputs/genai/classical_independent  (clip frames 137-257)
+  placement    : median 1.48%  p90 2.01%  success 33%  detected 100%  (n=3)
+  fidelity     : NCC 0.682  SSIM 0.450  structure 0.342  MAE 0.122
+  temporal     : flicker 0.0918  warping error 0.0627  jitter 10.22 px  (stride 1, 1 pairs)
+  preservation : PSNR 36.2 dB  SSIM 0.983  mean|diff| 0.0106  bg drift 0.33 px
+  occlusion    : leakage 53.3%  foreground PSNR 10.2 dB  visible-board coverage 92.2% over 1 frames  false occlusion n/a over 0 frames, overlay absent on 0  (1 mask frames, 0 with an empty mask) 
+
+classical_flow_assisted Evaluation of 5 frames in /Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/outputs/genai/classical_flow_assisted  (clip frames 137-257)
+  placement    : median 1.48%  p90 2.02%  success 33%  detected 100%  (n=3)
+  fidelity     : NCC 0.682  SSIM 0.449  structure 0.343  MAE 0.122
+  temporal     : flicker 0.0918  warping error 0.0627  jitter 10.22 px  (stride 1, 1 pairs)
+  preservation : PSNR 36.2 dB  SSIM 0.983  mean|diff| 0.0106  bg drift 0.33 px
+  occlusion    : leakage 53.4%  foreground PSNR 10.2 dB  visible-board coverage 92.3% over 1 frames  false occlusion n/a over 0 frames, overlay absent on 0  (1 mask frames, 0 with an empty mask) 
+
+generative Evaluation of 5 frames in /Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/outputs/genai  (clip frames 137-257)
+  placement    : median n/a  p90 n/a  success 0%  detected 0%  (n=3)
+  fidelity     : NCC 0.234  SSIM 0.325  structure 0.101  MAE 0.273
+  temporal     : flicker 0.0903  warping error 0.0761  jitter n/a  (stride 1, 1 pairs)
+  preservation : PSNR 25.4 dB  SSIM 0.922  mean|diff| 0.0375  bg drift 1238.24 px
+  occlusion    : leakage 2.1%  foreground PSNR 26.1 dB  visible-board coverage n/a over 0 frames  false occlusion n/a over 0 frames, overlay absent on 1  (1 mask frames, 0 with an empty mask) 
+

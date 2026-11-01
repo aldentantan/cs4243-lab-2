@@ -1,0 +1,107 @@
+{
+  "purpose": "Evaluation-only opening ablation; no threshold selection or output video changes.",
+  "clip": "common_clip",
+  "subset": "validation",
+  "frames": [
+    96,
+    192,
+    272
+  ],
+  "processing_width": 640,
+  "notebook": "notebooks/03_occlusion_and_compositing.ipynb, setup + fixed-radius ablation",
+  "metrics_source": "overlaylab.metrics.mask_iou, mask_f1, boundary_f1, leakage",
+  "frozen_occlusion": {
+    "mode": "difference",
+    "strong": 0.2,
+    "weak": 0.12,
+    "min_area": 38,
+    "open_radius": 2,
+    "connectivity": 8,
+    "gain_quantile": 0.5,
+    "feather": 3
+  },
+  "rows": [
+    {
+      "clip": "common_clip",
+      "subset": "validation",
+      "frame": 96,
+      "method": "frozen per-frame localisation + difference occlusion",
+      "open_radius": 0,
+      "iou": 0.8891596802495613,
+      "f1": 0.9413282419113473,
+      "boundary_f1": 0.7517467329779819,
+      "leakage": 0.015227367542761786
+    },
+    {
+      "clip": "common_clip",
+      "subset": "validation",
+      "frame": 96,
+      "method": "frozen per-frame localisation + difference occlusion",
+      "open_radius": 2,
+      "iou": 0.8900819992190551,
+      "f1": 0.9418448507385601,
+      "boundary_f1": 0.7543821168485145,
+      "leakage": 0.015227367542761786
+    },
+    {
+      "clip": "common_clip",
+      "subset": "validation",
+      "frame": 192,
+      "method": "frozen per-frame localisation + difference occlusion",
+      "open_radius": 0,
+      "iou": 0.899037890485806,
+      "f1": 0.9468351263447585,
+      "boundary_f1": 0.4796259185036741,
+      "leakage": 0.0010615048392132375
+    },
+    {
+      "clip": "common_clip",
+      "subset": "validation",
+      "frame": 192,
+      "method": "frozen per-frame localisation + difference occlusion",
+      "open_radius": 2,
+      "iou": 0.9031930766935243,
+      "f1": 0.9491344706472654,
+      "boundary_f1": 0.4998652786764663,
+      "leakage": 0.0011863877614736184
+    },
+    {
+      "clip": "common_clip",
+      "subset": "validation",
+      "frame": 272,
+      "method": "frozen per-frame localisation + difference occlusion",
+      "open_radius": 0,
+      "iou": 0.9132712456344587,
+      "f1": 0.9546699117736538,
+      "boundary_f1": 0.9118866163174715,
+      "leakage": 0.023650156180276664
+    },
+    {
+      "clip": "common_clip",
+      "subset": "validation",
+      "frame": 272,
+      "method": "frozen per-frame localisation + difference occlusion",
+      "open_radius": 2,
+      "iou": 0.9138232720909887,
+      "f1": 0.9549714285714286,
+      "boundary_f1": 0.9095857025364463,
+      "leakage": 0.023947642421538004
+    }
+  ],
+  "means": [
+    {
+      "open_radius": 0,
+      "iou": 0.9004896054566087,
+      "f1": 0.9476110933432532,
+      "boundary_f1": 0.7144197559330424,
+      "leakage": 0.013313009520750563
+    },
+    {
+      "open_radius": 2,
+      "iou": 0.9023661160011893,
+      "f1": 0.9486502499857513,
+      "boundary_f1": 0.7212776993538091,
+      "leakage": 0.013453799241924469
+    }
+  ]
+}

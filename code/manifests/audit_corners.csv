@@ -1,0 +1,13 @@
+clip_id,frame,frame_path,annotator,x1,y1,x2,y2,x3,y3,x4,y4,annotated_before_inference
+clip,0,../../data/personal/clip/frames/frame_000000.png,Alden,711.771,298.971,1306.971,305.829,1282.286,703.543,717.257,707.657,yes
+clip,46,../../data/personal/clip/frames/frame_000046.png,Alden,628.114,322.286,1361.829,323.657,1334.400,806.400,645.943,818.743,yes
+clip,91,../../data/personal/clip/frames/frame_000091.png,Alden,654.171,249.600,1294.629,255.086,1268.571,681.600,663.771,685.714,yes
+clip,137,../../data/personal/clip/frames/frame_000137.png,Alden,909.257,327.771,1401.600,329.143,1385.143,665.143,910.629,654.171,yes
+clip,183,../../data/personal/clip/frames/frame_000183.png,Alden,377.143,282.514,976.457,300.343,988.800,773.486,416.914,710.400,yes
+clip,228,../../data/personal/clip/frames/frame_000228.png,Alden,755.657,320.914,1376.914,344.229,1367.314,824.229,780.343,735.086,yes
+clip,257,../../data/personal/clip/frames/frame_000257.png,Alden,735.086,466.286,1360.457,507.429,1354.971,986.057,750.171,881.829,yes
+clip,274,../../data/personal/clip/frames/frame_000274.png,Alden,739.200,456.686,1345.371,493.714,1339.886,955.886,758.400,859.886,yes
+clip,320,../../data/personal/clip/frames/frame_000320.png,Alden,806.400,344.229,1431.771,363.429,1418.057,832.457,826.971,752.914,yes
+clip,365,../../data/personal/clip/frames/frame_000365.png,Alden,850.286,382.629,1461.943,416.914,1442.743,876.343,861.257,783.086,yes
+clip,385,../../data/personal/clip/frames/frame_000385.png,Alden,855.771,403.200,1456.457,445.714,1448.229,887.314,862.629,795.429,yes
+clip,411,../../data/personal/clip/frames/frame_000411.png,Alden,844.800,393.600,1456.457,436.114,1433.143,901.029,851.657,795.429,yes

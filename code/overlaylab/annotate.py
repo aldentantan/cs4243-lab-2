@@ -123,7 +123,11 @@ def quad_problems(q: np.ndarray, shape: Tuple[int, int]) -> List[str]:
     elif a < 0:
         out.append("corners go anticlockwise on screen: the order must be top-left, top-right, bottom-right, bottom-left "
                    "of reference.png (clockwise)")
-    cross = [np.cross(q[(i + 1) % 4] - q[i], q[(i + 2) % 4] - q[(i + 1) % 4]) for i in range(4)]
+    cross = []
+    for i in range(4):
+        edge1 = q[(i + 1) % 4] - q[i]
+        edge2 = q[(i + 2) % 4] - q[(i + 1) % 4]
+        cross.append(edge1[0] * edge2[1] - edge1[1] * edge2[0])
     if not (all(c > 0 for c in cross) or all(c < 0 for c in cross)):
         out.append("not convex (corners crossed or in the wrong order)")
     return out

@@ -1,0 +1,186 @@
+{
+  "mode": "frames",
+  "video": "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/outputs/genai/classical_independent",
+  "frames": {
+    "137": "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/outputs/genai/classical_independent/frame_000137.png",
+    "228": "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/outputs/genai/classical_independent/frame_000228.png",
+    "229": "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/outputs/genai/classical_independent/frame_000229.png",
+    "230": "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/outputs/genai/classical_independent/frame_000230.png",
+    "257": "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/outputs/genai/classical_independent/frame_000257.png"
+  },
+  "interval": [
+    137,
+    257
+  ],
+  "offset": 0,
+  "output_resolution": {
+    "137": [
+      1920,
+      1080
+    ],
+    "228": [
+      1920,
+      1080
+    ],
+    "229": [
+      1920,
+      1080
+    ],
+    "230": [
+      1920,
+      1080
+    ],
+    "257": [
+      1920,
+      1080
+    ]
+  },
+  "original_resolution": [
+    1920,
+    1080
+  ],
+  "resized": false,
+  "resized_frames": [],
+  "frames_with_corners": [
+    137,
+    228,
+    257
+  ],
+  "frames_with_masks": [
+    257
+  ],
+  "missing_frames": [],
+  "placement": {
+    "n": 3,
+    "median": 0.014799387258791596,
+    "p90": 0.02012709820970576,
+    "success": 0.3333333333333333,
+    "failed": 0,
+    "detection_rate": 1.0,
+    "threshold": 0.01,
+    "per_frame": {
+      "137": 0.00811746702248983,
+      "228": 0.014799387258791596,
+      "257": 0.0214590259474343
+    }
+  },
+  "fidelity": {
+    "ncc": 0.6817412376403809,
+    "ssim": 0.44951654449491146,
+    "mae": 0.12234749644994736,
+    "structure": 0.3424854775269826
+  },
+  "preservation": {
+    "psnr_outside": 36.15203000725333,
+    "ssim_outside": 0.982636552480336,
+    "mad_outside": 0.010572708832720915,
+    "background_drift_px": 0.3316138635079066
+  },
+  "preservation_per_frame": [
+    {
+      "frame": 137,
+      "psnr_outside": 36.40007576475855,
+      "ssim_outside": 0.9845633595498591,
+      "mad_outside": 0.010618237778544426,
+      "background_drift_px": 0.20560622215270996
+    },
+    {
+      "frame": 228,
+      "psnr_outside": 37.29181554315457,
+      "ssim_outside": 0.9830191753633117,
+      "mad_outside": 0.010089675895869732,
+      "background_drift_px": 0.21809269487857819
+    },
+    {
+      "frame": 257,
+      "psnr_outside": 34.76419871384686,
+      "ssim_outside": 0.980327122527837,
+      "mad_outside": 0.011010212823748589,
+      "background_drift_px": 0.5711426734924316
+    }
+  ],
+  "temporal": {
+    "stride": 1,
+    "flicker": 0.09182339161634445,
+    "warping_error": 0.06269429624080658,
+    "recovered_corner_jitter_px": 10.224394703887137,
+    "pairs": 1,
+    "pair_frames": [
+      [
+        229,
+        230
+      ]
+    ]
+  },
+  "occlusion": {
+    "leakage": 0.5334745179289138,
+    "psnr_foreground": 10.213464893165797,
+    "coverage_visible": 0.9224522873698286,
+    "false_occlusion": NaN,
+    "mask_frames": 1,
+    "empty_mask_frames": 0,
+    "n_coverage_frames": 1,
+    "n_false_occlusion_frames": 0,
+    "overlay_absent_frames": [],
+    "per_frame": [
+      {
+        "frame": 257,
+        "leakage": 0.5334745179289138,
+        "psnr_foreground": 10.213464893165797,
+        "mask_empty": false,
+        "foreground_pixels": 152519,
+        "overlay_absent": false,
+        "coverage_visible": 0.9224522873698286,
+        "false_occlusion": NaN
+      }
+    ]
+  },
+  "temporal_all_adjacent_pairs_diagnostic": {
+    "stride": 1,
+    "flicker": 0.10470739752054214,
+    "warping_error": 0.07473766058683395,
+    "recovered_corner_jitter_px": 15.515266142209036,
+    "pairs": 2,
+    "pair_frames": [
+      [
+        228,
+        229
+      ],
+      [
+        229,
+        230
+      ]
+    ]
+  },
+  "evaluation_protocol": {
+    "selected_temporal_pair": [
+      229,
+      230
+    ],
+    "audit_corner_indices": [
+      0,
+      46,
+      91,
+      137,
+      183,
+      228,
+      257,
+      274,
+      320,
+      365,
+      385,
+      411
+    ],
+    "audit_mask_indices": [
+      0,
+      183,
+      257,
+      274,
+      385
+    ],
+    "annotation_white_means": "visible poster",
+    "evaluator_mask_white_means": "occluder",
+    "mask_conversion": "annotated board quadrilateral & ~visible poster mask",
+    "audit_files_modified": false
+  }
+}
