@@ -91,15 +91,139 @@ IoU / F1 from the occlusion masks saved by `run_pipeline` on the ground-truth ma
 ### Question 4 — Occlusion
 <!-- which occluders differencing recovers and which stay ambiguous; effect of the strong threshold and the minimum area; why hysteresis matters for thin occluders and why opening works against it (thinnest occluder that survives the frozen open_radius; what the radius buys over radius 0 on the validation masks); why the viewpoint clip produces false occlusion under strong perspective with a correct homography, and which part of the differencing is responsible -->
 
+[`compensated_difference`](overlaylab/compositing.py#L53) warps the original poster reference, fits a global gain and offset on the best-agreeing covered pixels, and measures the remaining colour difference. [`occlusion_mask`](overlaylab/compositing.py#L113) uses this signal to protect foreground objects before [`composite`](overlaylab/compositing.py#L222) inserts the artwork. A card region that differs strongly from the original poster is recovered. a blue card over similarly blue poster pixels, or a motion-blurred edge, can remain below the weak threshold. This is an appearance ambiguity, even with correct geometry. The saved common-clip test results below show weaker boundary recovery at frame 448 than at frames 144 and 208. Shadows are another ambiguity. A local shadow changes intensity without replacing poster texture, and one global brightness fit cannot necessarily remove it. The current code has no separate shadow classifier.
+
+These are **Notebook 3, section 4**, common-clip **test** masks at **640-pixel processing width**, using frozen **per-frame localisation + difference masking**; they are not the full-resolution flow-assisted video results above. All entries come from `overlaylab.metrics` calls in [Notebook 3](notebooks/03_occlusion_and_compositing.ipynb), cell `a0a0a2a7`.
+
+| common test frame | IoU | F1 | boundary F1 | leakage | no-occlusion baseline leakage |
+|---|---|---|---|---|---|
+| 144 | 0.924 | 0.960 | 0.673 | 0.9% | 93.4% |
+| 208 | 0.950 | 0.975 | 0.926 | 0.7% | 96.4% |
+| 448 | 0.806 | 0.892 | 0.416 | 0.6% | 82.8% |
+
+**Thresholds and hysteresis:** [`select_difference_thresholds`](overlaylab/compositing.py#L165) selected settings on common-clip **validation frames 96, 192 and 272** only. The saved [frozen configuration](outputs/thresholds.json), `occlusion`, uses strong **0.20**, weak **0.12**, minimum area **152 full-resolution pixels** (**38** at Notebook 3's processing width), and opening radius **2**. Strong pixels seed [`hysteresis`](overlaylab/compositing.py#L23) while connected weak pixels extend the mask through low-contrast or blurred boundaries. Raising the strong threshold can remove seeds, while raising minimum area rejects any small components that are disconnected.
+
+The saved **common validation frame 192**, frozen per-frame method, **Notebook 3 section 5** ablation (cell `ee16eb20`) indicates:
+
+| setting on common validation frame 192 | strong | weak | minimum area at notebook resolution | IoU | leakage |
+|---|---|---|---|---|---|
+| frozen | 0.20 | 0.12 | 38 | 0.903 | 0.1% |
+| higher strong threshold | 0.30 | 0.12 | 38 | 0.903 | 0.1% |
+| larger minimum area | 0.20 | 0.12 | 228 | 0.903 | 0.1% |
+| hysteresis disabled | 0.20 | 0.20 | 38 | 0.671 | 20.1% |
+
+Thus this frame supports retaining weak pixels connected to strong evidence; it does not show a benefit from increasing either the strong threshold or component size.
+
+**Opening versus thin occluders:** 
+
+Opening erodes then dilates the candidate mask, removing narrow protrusions and speckles that hysteresis may retain. The frozen radius produces a **5 × 5 elliptical kernel**. An axis-aligned straight strip needs at least **5 processing pixels** of width to contain that kernel. This is a geometric bound from `occlusion_mask`, not a measured minimum physical occluder width in these clips. Connectivity, threshold contrast and component area must also pass, so width alone does not guarantee survival of the occluder pixels.
+
+An evaluation-only ablation kept all other frozen settings and the same localisations on **common validation frames 96, 192 and 272**, at **640-pixel width**, and compared the means from `overlaylab.metrics`. The exact per-frame values and configuration are in [question4_opening_ablation.json](student_files/question4_opening_ablation.json).
+
+| common validation per-frame method | mean IoU | mean boundary F1 | mean leakage |
+|---|---|---|---|
+| opening radius 0 | 0.9005 | 0.7144 | 1.3313% |
+| frozen opening radius 2 | 0.9024 | 0.7213 | 1.3454% |
+
+Opening results in a small improvement in mask overlap and average boundary agreement, with slightly more artwork leakage. It is a cleanup tradeoff, not a universal improvement. The frozen thresholds were not changed after this ablation.
+
+**False occlusion under perspective:** 
+
+A homography aligns a plane's geometry but does not guarantee identical sampled colours. Foreshortening, resampling, blur and spatially varying illumination can leave residual differences that the single gain/offset fit cannot remove. The thresholding stage then treats changed poster appearance as foreground. In **Notebook 3 section 6**, the **viewpoint diagnostic frames 224 and 288** use explicitly labelled **evaluation-only GT-fallback homographies**. Their masks still remove visible poster pixels. This supports a photometric failure rather than attributing every false region to tracking. The fallback is never used to render the submitted pipeline videos.
+
 ## Stage 4 — Your clip
 ### Capture and audit
 <!-- capture conditions (resolution, fps, duration, board fraction, pan / distance / angle / occlusion crossing), privacy, audit annotations recorded before any method ran -->
+
+My personal clip shows a flat wall-mounted colourful poster, handheld changes of distance and viewing angle, and a blue book crossing in front. The [capture manifest](manifests/capture_manifest.csv), row `clip`, records an iPhone capture at **1920 × 1080, 30 fps, 13.735 s**, a **0.21 m × 0.14 m** board and a recorded board fraction of **0.113**, with consent obtained and metadata removed. The original is [clip.mp4](../data/personal/clip/clip.mp4); the [source frame 257](../data/personal/clip/frames/frame_000257.png) shows the book crossing.
+
+The [corner manifest](manifests/audit_corners.csv) records **12 audit frames**: **0, 46, 91, 137, 183, 228, 257, 274, 320, 365, 385 and 411**. The [mask manifest](manifests/audit_masks.csv) records **0, 183, 257, 274 and 385**. Both manifests declare `annotated_before_inference=yes`. Original annotation PNGs mark the **visible poster white**. Notebook 4 converts them in memory to **annotated board quadrilateral AND NOT visible-poster mask**, since the evaluator expects the **occluder white**. Source annotations remain unchanged. Thin differences between the corner quadrilateral and visible-mask outline can be counted as foreground even on clean frames; the [input acceptance report](outputs/genai/inputs/book_tracking_repaired_v1/acceptance_report_visible.json) flags this annotation-review limitation.
+
 ### Overlay Scorecard
 <!-- outputs/scorecards/<clip_id>_scorecard.md: both temporal variants, overlaylab.evaluate --clip <clip_id> -->
+
+The [complete personal-clip scorecard](outputs/scorecards/clip_scorecard.md) compares [independent](outputs/videos/clip_independent.mp4) and [flow-assisted](outputs/videos/clip_flow_assisted.mp4) outputs made with the frozen configuration and `nus_ranking.png`. The following rows quote the **full-video audit evaluation**, not the smaller generative comparison subset. Geometry and fidelity use the **12 corner audit frames** listed above; occlusion uses the **five mask audit frames**, with **five scored coverage frames, no detected-overlay absences and no missing output frames** for each variant.
+
+| personal clip, full-video audit | median / p90 corner error | placement success | NCC / SSIM / structure | mask-frame leakage | visible-board coverage |
+|---|---|---|---|---|---|
+| independent | 1.08% / 1.74% | 41.7% | 0.740 / 0.477 / 0.409 | 61.6% | 94.3% |
+| flow-assisted | 1.40% / 4.42% | 16.7% | 0.673 / 0.425 / 0.333 | 53.5% | 89.0% |
+
+Sources: [independent full-video report](outputs/evaluation/clip_independent_report.json) and [flow-assisted full-video report](outputs/evaluation/clip_flow_assisted_report.json) measures `placement`, `fidelity` and `occlusion`. The table favours independent placement and identity on this clip although none of the variants reliably protect the book. The mask-outline ambiguity described above limits interpretation of the aggregate leakage, so the clearly occluded **frame 257** is examined separately below.
+
 ### Generative comparison
 <!-- the open-weight video model you chose (direct pixel generation; inference scripts permitted), its settings, the video you gave it (whole clip, a cut, or joined segments), and why (cite the model); the seed, the log, the overlaylab.evaluate --frames report, comparison table against the classical output on the same frames, [AI-GENERATION] markers -->
+
+**[AI-GENERATION]** I used the open-weight [Wan2.1-VACE-1.3B model](https://huggingface.co/Wan-AI/Wan2.1-VACE-1.3B), the smaller VACE option supporting 480p, with model-generated edited pixels. The [run log](manifests/genai_log.csv) records **seed 500, 50 sampling steps, 81 requested frames, 480p and model offloading**, on the NUS SoC cluster requesting an **A100-40 GPU and eight CPU cores**. Actual allocation, peak VRAM and the inference repository commit were not recorded. The preserved result is [raw output.mp4](outputs/genai/output.mp4) **[AI-GENERATION]**. The log contains one video generation.
+
+The model received the **personal source interval 120–269 inclusive**, a **5.00 s** cut, [`nus_ranking.png`](../data/artwork/nus_ranking.png), and the paired [gray-filled video](outputs/genai/inputs/book_tracking_repaired_v1/interval_inpaint.mp4) / [editable mask](outputs/genai/inputs/book_tracking_repaired_v1/src_mask.mp4). The separate [book tracker and helper](student_files/prepare_vace_inputs.py) exclude the predicted blue book from editing and repair missing board geometry from neighbouring frozen predictions; [preparation.json](outputs/genai/inputs/book_tracking_repaired_v1/preparation.json) records the repairs. This prepares inputs without compositing the replacement artwork. The classical comparison retains its original Stage 3 masks, so occlusion improvements cannot be assigned to the generative model alone. See the [prepared frame 257](outputs/genai/inputs/book_tracking_repaired_v1/review_000257.jpg).
+
+The exact prompt is recorded in [genai_conditions.json](manifests/genai_conditions.json), `prompt.template`, and the log:
+
+> A handheld video of a rectangular NUS ranking poster mounted on a wall. The poster displays the supplied reference artwork, with a light blue background, dark blue ranking text, a large orange “1st”, and a photograph of a university building. The design fills the poster surface and follows its changing perspective. A blue book passes in front of the poster.
+
+**Audit protocol:** 
+
+All methods use source frames **137 (clean), 228 (perspective), 257 (occluded), and pair 229–230**, with the same complete audit dictionary and the visible-white conversion described above. Placement, fidelity and preservation are scored on the selected corner-labelled frames **137, 228 and 257**; occlusion uses **257** only; temporal statistics are restricted to **229–230**. This pair precedes the book crossing visible at frame 257, so it does not measure temporal stability through that crossing. No source frame is missing from the extracts. [Notebook 4](notebooks/04_personal_clips_and_genai_analysis.ipynb), cell `5b106b28`, records the evaluation protocol and preserves other adjacent-pair results separately.
+
+The [extraction manifest](outputs/genai/audit_extraction_manifest.json) records the raw **832 × 480, 16 fps** output and nominal timestamp mapping **137→9, 228→58, 229→58, 230→59, 257→73**, followed by resizing audit extracts to source resolution. The true temporal pair maps to distinct output frames and the perspective frame 228 shares an output frame with 229 because the output frame rate is lower. This is declared sampling, with no favourable-frame search or retiming correction.
+
+The following three tables quote `overlaylab.evaluate` results from the [independent selected-frame report](outputs/evaluation/classical_independent_frames_report.json), [flow-assisted selected-frame report](outputs/evaluation/classical_flow_assisted_frames_report.json) and [generative selected-frame report](outputs/evaluation/genai_frames_report.json). The saved [comparison contact sheet](outputs/genai/audit_contact_sheet.jpg) labels the same source indices and marks generated pixels **[AI-GENERATION]**.
+
+**Table A — personal clip, corner audit subset 137 / 228 / 257: placement and artwork fidelity.**
+
+| method | median error | success | artwork detected | NCC | SSIM | structure |
+|---|---|---|---|---|---|---|
+| classical_independent | 1.48% | 33% | 100% | 0.682 | 0.450 | 0.342 |
+| classical_flow_assisted | 1.48% | 33% | 100% | 0.682 | 0.449 | 0.343 |
+| generative [AI-GENERATION] | n/a | 0% | 0% | 0.234 | 0.325 | 0.101 |
+
+**Table B — personal clip: temporal pair 229–230; background preservation on corner audit subset 137 / 228 / 257.**
+
+| method | pair flicker | pair warping error | pair jitter (px) | background PSNR (dB) | background SSIM | background drift (px) |
+|---|---|---|---|---|---|---|
+| classical_independent | 0.0918 | 0.0627 | 10.22 | 36.2 | 0.983 | 0.33 |
+| classical_flow_assisted | 0.0918 | 0.0627 | 10.22 | 36.2 | 0.983 | 0.33 |
+| generative [AI-GENERATION] | 0.0903 | 0.0761 | n/a | 25.4 | 0.922 | 1238.24 |
+
+**Table C — personal clip, occluded audit frame 257 only.** `overlay absent` is the evaluator's artwork-detection flag, not proof of visually absent generated content.
+
+| method | leakage | visible-board coverage | coverage-scored / hidden / missing frames | overlay absent |
+|---|---|---|---|---|
+| classical_independent | 53.3% | 92.2% | 1 / 0 / 0 | 0 |
+| classical_flow_assisted | 53.4% | 92.3% | 1 / 0 / 0 | 0 |
+| generative [AI-GENERATION] | 2.1% | n/a | 0 / n/a / 0 | 1 |
+
+The classical videos have no hidden selected output frames. A classical tracker `HIDE` flag does not apply to VACE. Its coverage is unscored because the artwork detector fails. Low leakage alone therefore cannot establish a successful complete replacement.
+
+**Table D — recorded processing cost, with different duration and hardware scopes.** Times come from `timing.track_s + timing.composite_s` in the [independent statistics](outputs/videos/clip_independent_stats.json) and [flow-assisted statistics](outputs/videos/clip_flow_assisted_stats.json), and `processing_time_s` in the [VACE log](manifests/genai_log.csv); they are run metadata, not quality scores.
+
+| method | processing time (s) | input scope | recorded compute |
+|---|---|---|---|
+| classical_independent | 400.25 | 13.73 s full personal clip | Macbook Pro M5 chip, as recorded in Notebook 4's comparison table |
+| classical_flow_assisted | 199.63 | 13.73 s full personal clip | Macbook Pro M5 chip, as recorded in Notebook 4's comparison table |
+| generative [AI-GENERATION] | 900.0 | 5.00 s personal-clip cut | NUS SoC SLURM; requested A100-40 GPU and eight CPU cores |
+
+These timings exclude the evaluation pass and are not a controlled speed benchmark. Manual annotation, preprocessing and debugging effort was not timed.
+
 ### Question 5 — Reflection
 <!-- classical vs your generative model on your clip: geometric placement, artwork identity, occlusion order, background preservation (what the background PSNR says about generated vs composited pixels); controllability, cost; what the model generated outside the board and in front of it; whether it kept the clip's timing (compare with the staff MiniMax-H3 example in data/genai_oracle/) -->
+
+1. **Geometric placement.** Both classical variants follow the board's quadrilateral more faithfully in [clean frame 137](outputs/genai/classical_independent/frame_000137.png) and [perspective frame 228](outputs/genai/classical_independent/frame_000228.png), although original poster fragments remain near the boundary. **Table A**, personal corner audit subset, quotes **1.48% median error and 33% success** for each classical variant. **Table A's generative row [AI-GENERATION]** has **0% detection and n/a error**, so VACE has no reliable measured placement score; [its frame 228](outputs/genai/frame_000228.png) **[AI-GENERATION]** shows the broad plane but does not establish accurate corner alignment.
+
+2. **Artwork identity.** **Table A**, same personal audit subset, quotes classical **NCC 0.682** versus generative **0.234**; SSIM and structure also favour the classical rows. The [classical clean frame](outputs/genai/classical_independent/frame_000137.png) preserves recognisable NUS wording, while [VACE frame 137](outputs/genai/frame_000137.png) **[AI-GENERATION]** distorts the lettering and layout despite retaining blue tones and a building-like image. Neither method's evaluated output reproduces the reference perfectly after warping, masking and encoding but the VACE-generated video retains much fewer identifiable characteristics of the original artwork.
+
+3. **Occlusion order.** **Table C**, personal occluded frame **257**, quotes classical leakage **53.3% / 53.4%** with coverage **92.2% / 92.3%**, versus VACE **2.1% leakage and n/a coverage**. Comparing [independent frame 257](outputs/genai/classical_independent/frame_000257.png), [flow-assisted frame 257](outputs/genai/classical_flow_assisted/frame_000257.png) and [VACE frame 257](outputs/genai/frame_000257.png) **[AI-GENERATION]**, classical artwork spills onto the book, whereas VACE preserves its foreground order more successfully. VACE received the [dedicated book-aware prepared input](outputs/genai/inputs/book_tracking_repaired_v1/review_000257.jpg), so this is a comparison of the complete methods, including preprocessing. Its unscored coverage prevents a claim that it painted the entire visible poster.
+
+4. **Background preservation.** **Table B**, personal corner audit subset, quotes classical **36.2 dB PSNR / 0.983 SSIM** versus VACE **25.4 dB / 0.922**. This supports more outside-board change in VACE, visible in the [contact sheet](outputs/genai/audit_contact_sheet.jpg) **[AI-GENERATION]**. PSNR alone cannot prove how pixels were produced, and no matched source re-encoding baseline was measured here. The stronger code guarantee is limited as [`composite`](overlaylab/compositing.py#L222) preserves source pixels wherever its alpha is zero **before encoding**. Incorrect predicted coverage can reach outside the true board, and encoding can alter decoded pixels; therefore neither finished MP4 is proven pixel-identical outside the annotated board.
+
+5. **Controllability.** The logged prompt specifies content, perspective and book order, yet [VACE frame 137](outputs/genai/frame_000137.png) **[AI-GENERATION]** still changes the text. Prompt edits can request a different appearance, but exact geometry, the compositing support and mask logic are code-controlled through [`artwork_to_frame`](overlaylab/localisation.py), [`composite`](overlaylab/compositing.py) and the [book tracker](student_files/book_tracking.py). The [classical frame 137](outputs/genai/classical_independent/frame_000137.png) and [prepared book frame 257](outputs/genai/inputs/book_tracking_repaired_v1/review_000257.jpg) illustrate those controls. A model input mask requests where to edit; it does not guarantee exact generated artwork or unchanged output pixels elsewhere.
+
+6. **Timing.** **Table B**, declared personal pair **229–230**, quotes classical **flicker 0.0918 / warping error 0.0627** and VACE **0.0903 / 0.0761**. VACE's slightly lower flicker is accompanied by higher warping error; it is not evidence that timing is preserved. Compare [VACE frame 229](outputs/genai/frame_000229.png) and [230](outputs/genai/frame_000230.png) **[AI-GENERATION]** with the corresponding classical extracts. The extraction manifest preserves nominal timestamps, but sampling cannot undo model retiming. **Table B's 1238.24 px VACE background drift** is an unreliable correspondence estimate on changed imagery, rather than literal camera displacement or a measured timing offset. We can report appearance/motion mismatch, but these metrics do not isolate retiming from re-rendering.
+
+7. **Cost.** **Table D** quotes **400.25 s independent**, **199.63 s flow-assisted**, and **900.0 s VACE [AI-GENERATION]**, for the explicitly different full-clip/cut scopes and hardware. VACE also required the separate prepared inputs; see [frame 257's preprocessing preview](outputs/genai/inputs/book_tracking_repaired_v1/review_000257.jpg). 
+
+**Staff oracle comparison.** The [staff MiniMax-H3 report](../data/genai_oracle/minimax_h3/report.json) **[AI-GENERATION]** scores the **common clip**, corner audit frames **160 / 192 / 320**, occlusion frame **192**, and temporal pair **160–161**. Its `placement` / `fidelity` fields quote **100% artwork detection and NCC 0.317**, compared with **0% and 0.234** in **Table A's personal-clip VACE row**. In these examples the larger model produces more detectable artwork, but does not solve precise geometry or background preservation: the oracle reports **2.67% median placement error** and **20.04 dB background PSNR**. On its **occluded frame 192**, it still has **8.3% leakage and 90.0% coverage**. The [staff frame 320](../data/genai_oracle/minimax_h3/frame_000320.png) and [contact sheet](../data/genai_oracle/contact_sheet.jpg) **[AI-GENERATION]** also show a substantial mismatch at the nominal source time, consistent with changed camera motion or timing. Different clips, artworks and conditioning prevent attributing these differences solely to model size; each run is a qualitative probe.
 
 ## Evidence table
 | Student file | Function | Report section | Notebook figure / table / video |
@@ -115,3 +239,4 @@ IoU / F1 from the occlusion masks saved by `run_pipeline` on the ground-truth ma
 |---|---|---|---|---|
 | Codex | `code/overlaylab/keypoints.py`, `code/overlaylab/geometry.py`, `code/overlaylab/localisation.py`, `code/overlaylab/temporal.py`, `code/overlaylab/synthetic.py`, Notebook 2, `code/REPORT.md` Stages 1–2 | [AI-CODE] [AI-LANGUAGE] | Assisted with the listed keypoint, geometry, localisation, tracking, and synthetic text-rendering implementations. Completed Notebook 2 analysis cells | Compared the report with the saved Notebook 1 and Notebook 2 outputs and checked changed Python and notebook cells for syntax. |
 | Codex | `code/student_files/` VACE preprocessing helper, tracker and tests; Notebook 4 audit extraction, mask interpretation, evaluation and reflection; `code/REPORT.md` stress tables | [AI-CODE] [AI-LANGUAGE] | Implemented the separate book tracker and approved board-gap repair, repaired helper packaging, corrected evaluation for visible-white annotations and the selected temporal pair, and assisted with reflection and submission checks. Generated VACE pixels are separately marked [AI-GENERATION]. | 18 custom tests passed; supplied suite ran 82 tests with one skipped; evaluated all eight supplied runs; checked raw-video identity, audit paths and unchanged source annotations. |
+| Codex | `code/REPORT.md` Question 4 and Stage 4 | [AI-LANGUAGE] | Included the frozen-validation opening ablation | Checked copied text against the template, numerical sources and local file references. |
