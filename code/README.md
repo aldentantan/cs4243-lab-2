@@ -325,7 +325,7 @@ detect the artwork; that flag can also mean failed detection, not only deliberat
 
 Stages 1 and 3 have four rows. Stage 2 has six because its common validation/test rows each appear for both temporal variants; blur and exit each have one flow-assisted row.
 
-Jitter uses all available annotations for the clip, not just the row's validation/test subset. It is therefore identical between those two rows for a given variant. `(re)localisations` counts actual localiser calls; `REINIT flags` counts monitor requests, which can differ. Actual localiser successful registrations remain in `reinit_frames` for drift. Longest run counts consecutive status-ok, finite poses, includes the registration frame, and stops at a lost frame.
+Jitter uses all available annotations for the clip, not just the row's validation/test subset. It is therefore identical between those two rows for a given variant. The supplied reporting tool takes `(re)localisations` from the number of `reinit_frames`; this implementation records successful reference registrations there. Actual call attempts, including failures, can be counted separately from per-frame records with a non-null `n_matches`. The supplied `longest run` is the largest interval between recorded registrations (or the clip end), so it can include lost frames. Read it alongside `tracked` and `HIDE`; it is not necessarily an uninterrupted valid track. `REINIT flags` counts monitor requests and is separate from both registration counts.
 
 Exclude model checkpoints, Python environments, caches, notebook checkpoint folders and optional `.webm` previews from submission. Keep model/version/settings and provenance in the log and appendix instead. The submission contains the required MP4s, not the preview copies.
 
