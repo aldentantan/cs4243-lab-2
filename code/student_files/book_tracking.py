@@ -2,7 +2,7 @@
 
 This is a separate, clip-specific preprocessor, not a change to the frozen
 classical pipeline. Inputs are BGR uint8 video pixels and predicted board
-coverage. No audit annotation, artwork, or generated output is used.
+coverage. No audit annotation, artwork, or generated output is used. [AI-CODE]
 """
 from __future__ import annotations
 

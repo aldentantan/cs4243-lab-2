@@ -32,7 +32,7 @@
       "artwork",
       "board masks from your frozen pipeline (only if the model needs a mask)"
     ],
-    "template": "A handheld video of a rectangular NUS ranking poster mounted on a wall. The poster displays the supplied reference artwork, with a light blue background, dark blue ranking text, a large orange “1st”, and a photograph of a university building. The design fills the poster surface and follows its changing perspective. A blue book passes in front of the poster."
+    "template": "Replace the advertisement on the board with the attached artwork."
   },
   "evaluation": "python -m overlaylab.evaluate --frames outputs/genai/frame_*.png --clip <clip_id> --artwork <your_artwork>",
   "declaration": "model name and visible version, date, settings (steps, resolution, seed), the video you gave it (whole clip, cut, or joined segments), output fps, prompt, time, compute",

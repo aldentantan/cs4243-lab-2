@@ -182,7 +182,7 @@
       "annotation_white_means": "occluder",
       "evaluator_mask_white_means": "occluder",
       "mask_conversion": "none (canonical occluder-white PNGs)",
-      "mask_provenance": "student_files/mask_provenance/migration.json",
+      "mask_provenance": "student_files/mask_provenance/visible_poster_originals/",
       "audit_files_modified_during_evaluation": false
     }
   },
@@ -369,7 +369,7 @@
       "annotation_white_means": "occluder",
       "evaluator_mask_white_means": "occluder",
       "mask_conversion": "none (canonical occluder-white PNGs)",
-      "mask_provenance": "student_files/mask_provenance/migration.json",
+      "mask_provenance": "student_files/mask_provenance/visible_poster_originals/",
       "audit_files_modified_during_evaluation": false
     }
   },
@@ -558,7 +558,7 @@
       "annotation_white_means": "occluder",
       "evaluator_mask_white_means": "occluder",
       "mask_conversion": "none (canonical occluder-white PNGs)",
-      "mask_provenance": "student_files/mask_provenance/migration.json",
+      "mask_provenance": "student_files/mask_provenance/visible_poster_originals/",
       "audit_files_modified_during_evaluation": false
     }
   }
