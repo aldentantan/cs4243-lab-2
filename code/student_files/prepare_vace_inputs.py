@@ -4,10 +4,12 @@ From code/:
     python student_files/prepare_vace_inputs.py prepare
     python student_files/prepare_vace_inputs.py prepare --repair-missing-board
     python student_files/prepare_vace_inputs.py evaluate
-    python student_files/prepare_vace_inputs.py evaluate --audit-mask-kind visible
+    python student_files/prepare_vace_inputs.py evaluate --audit-mask-kind occluder
 
 Preparation reads the video and predicted board masks only. Evaluation is a
 separate invocation that loads audit labels after all predictions are fixed.
+Current audit PNGs use occluder-white; visible-white is retained only for
+explicit evaluation of historical annotations. [AI-CODE]
 All frame filenames retain the original source indices.
 """
 from __future__ import annotations

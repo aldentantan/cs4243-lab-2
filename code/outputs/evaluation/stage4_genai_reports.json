@@ -179,10 +179,11 @@
         274,
         385
       ],
-      "annotation_white_means": "visible poster",
+      "annotation_white_means": "occluder",
       "evaluator_mask_white_means": "occluder",
-      "mask_conversion": "annotated board quadrilateral & ~visible poster mask",
-      "audit_files_modified": false
+      "mask_conversion": "none (canonical occluder-white PNGs)",
+      "mask_provenance": "student_files/mask_provenance/migration.json",
+      "audit_files_modified_during_evaluation": false
     }
   },
   "classical_flow_assisted": {
@@ -365,10 +366,11 @@
         274,
         385
       ],
-      "annotation_white_means": "visible poster",
+      "annotation_white_means": "occluder",
       "evaluator_mask_white_means": "occluder",
-      "mask_conversion": "annotated board quadrilateral & ~visible poster mask",
-      "audit_files_modified": false
+      "mask_conversion": "none (canonical occluder-white PNGs)",
+      "mask_provenance": "student_files/mask_provenance/migration.json",
+      "audit_files_modified_during_evaluation": false
     }
   },
   "generative": {
@@ -553,10 +555,11 @@
         274,
         385
       ],
-      "annotation_white_means": "visible poster",
+      "annotation_white_means": "occluder",
       "evaluator_mask_white_means": "occluder",
-      "mask_conversion": "annotated board quadrilateral & ~visible poster mask",
-      "audit_files_modified": false
+      "mask_conversion": "none (canonical occluder-white PNGs)",
+      "mask_provenance": "student_files/mask_provenance/migration.json",
+      "audit_files_modified_during_evaluation": false
     }
   }
 }
