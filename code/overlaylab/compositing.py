@@ -42,7 +42,9 @@ def hysteresis(strong: np.ndarray, weak: np.ndarray, connectivity: int = 8) -> n
     # Connected components of the weak mask are precisely the regions
     # reachable from one another through weak pixels. Keep only regions
     # containing at least one strong seed.
-    count, labels = cv2.connectedComponents(weak.astype(np.uint8), connectivity=connectivity)
+    _, labels, _, _ = cv2.connectedComponentsWithStats(
+        weak.astype(np.uint8), connectivity=connectivity
+    )
     seeded = np.unique(labels[strong])
     seeded = seeded[seeded != 0]
     if not len(seeded):

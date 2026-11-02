@@ -12,6 +12,10 @@ from typing import Dict, Optional, Tuple
 import cv2
 import numpy as np
 
+from overlaylab.config import DetectorConfig, FlowConfig
+from overlaylab.keypoints import detect_corners
+from overlaylab.temporal import lk_flow
+
 
 @dataclass(frozen=True)
 class TrackerConfig:
@@ -89,23 +93,24 @@ class BookTracker:
         old = self.previous_mask.astype(np.uint8)
         kernel = np.ones((5, 5), np.uint8)
         boundary = (cv2.dilate(old, kernel) - cv2.erode(old, kernel)) * 255
-        points = cv2.goodFeaturesToTrack(self.previous_gray, maxCorners=100,
-                                         qualityLevel=.01, minDistance=8, mask=boundary)
-        if points is None or len(points) < 4:
+        previous = self.previous_gray.astype(np.float32) / 255.
+        current = gray.astype(np.float32) / 255.
+        points, _ = detect_corners(previous, DetectorConfig(
+            sigma_w=1.5, kappa=.04, response_fraction=.01,
+            nms_radius=8, max_corners=1000, border=13))
+        xy = np.round(points).astype(int)
+        points = points[boundary[xy[:, 1], xy[:, 0]] > 0][:100]
+        if len(points) < 4:
             return self.previous_mask, 0
-        moved, status, _ = cv2.calcOpticalFlowPyrLK(self.previous_gray, gray, points, None,
-                                                  winSize=(25, 25), maxLevel=3)
-        if moved is None:
-            return self.previous_mask, 0
-        back, reverse, _ = cv2.calcOpticalFlowPyrLK(gray, self.previous_gray, moved, None,
-                                                  winSize=(25, 25), maxLevel=3)
-        if back is None:
-            return self.previous_mask, 0
-        good = status.ravel().astype(bool) & reverse.ravel().astype(bool)
-        good &= np.linalg.norm(back[:, 0] - points[:, 0], axis=1) < 1.5
+        flow_config = FlowConfig(window=12, iterations=30)
+        vectors, _, _, status = lk_flow(previous, current, points, flow_config)
+        moved = points + vectors
+        reverse_vectors, _, _, reverse = lk_flow(current, previous, moved, flow_config)
+        good = status & reverse
+        good &= np.linalg.norm(vectors + reverse_vectors, axis=1) < 1.5
         if good.sum() < 4:
             return self.previous_mask, int(good.sum())
-        affine, inliers = cv2.estimateAffinePartial2D(points[good, 0], moved[good, 0],
+        affine, inliers = cv2.estimateAffinePartial2D(points[good], moved[good],
                                                      method=cv2.RANSAC,
                                                      ransacReprojThreshold=2.0)
         if affine is None:
