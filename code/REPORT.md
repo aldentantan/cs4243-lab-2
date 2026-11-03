@@ -1,5 +1,7 @@
 # CS4243 Lab 2 report
 
+**Authors:** Alden (A0273071L), Paul Cheng (A0272538X)
+
 This report evaluates a classical pipeline for board localisation, optical-flow tracking and occlusion-aware advertisement compositing. Settings are frozen on the common clip's validation data and applied to the common test subset, stress clips and personal clip. The generated stress tables summarise Stages 1–3; the personal Overlay Scorecard and same-frame VACE comparison examine placement, artwork fidelity, foreground order and background preservation. [AI-LANGUAGE]
 
 ## Stage 1 — Localise
