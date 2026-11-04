@@ -1,0 +1,73 @@
+{
+  "source_video": "code/outputs/output.mp4",
+  "canonical_video": "code/outputs/genai/output.mp4",
+  "video_sha256": "24885092268bde1ed2f56de684d2f107f13720be56b93564eb2fc339c0583476",
+  "clip_id": "personal_clip",
+  "source_interval_inclusive": [
+    120,
+    269
+  ],
+  "source_fps": 30.0,
+  "output_video_info": {
+    "frames": 124,
+    "fps": 24.0,
+    "width": 864,
+    "height": 480
+  },
+  "extraction_rule": "round((source_frame - interval_start) * output_fps / source_fps), matching Notebook 4",
+  "extracted_resolution": [
+    1920,
+    1080
+  ],
+  "resize_interpolation": "OpenCV INTER_CUBIC, matching Notebook 4",
+  "temporal_pair_distinct": true,
+  "frames": [
+    {
+      "source_frame": 137,
+      "output_frame": 14,
+      "source_relative_time_s": 0.5666666666666667,
+      "output_time_s": 0.5833333333333334,
+      "sampling_offset_s": 0.01666666666666672,
+      "path": "code/outputs/genai/frame_000137.png",
+      "sha256": "c0468207eb2cd71913fc51bf41692a4335531de073930b354c8554826ab2536d"
+    },
+    {
+      "source_frame": 228,
+      "output_frame": 86,
+      "source_relative_time_s": 3.6,
+      "output_time_s": 3.5833333333333335,
+      "sampling_offset_s": -0.016666666666666607,
+      "path": "code/outputs/genai/frame_000228.png",
+      "sha256": "9de8ebed21356126ccb3ba081326427f82cc8321be3e3be1a2520944e38a9c53"
+    },
+    {
+      "source_frame": 246,
+      "output_frame": 101,
+      "source_relative_time_s": 4.2,
+      "output_time_s": 4.208333333333333,
+      "sampling_offset_s": 0.00833333333333286,
+      "path": "code/outputs/genai/frame_000246.png",
+      "sha256": "d75434dfa8d5d666093de171e77cc0741598569995e5f610a6afb0988a7ad454"
+    },
+    {
+      "source_frame": 247,
+      "output_frame": 102,
+      "source_relative_time_s": 4.233333333333333,
+      "output_time_s": 4.25,
+      "sampling_offset_s": 0.016666666666666607,
+      "path": "code/outputs/genai/frame_000247.png",
+      "sha256": "f197e3af6dcfdfe7de85b2ea7aadac738082088efd34531af8b97006381579a6"
+    },
+    {
+      "source_frame": 258,
+      "output_frame": 110,
+      "source_relative_time_s": 4.6,
+      "output_time_s": 4.583333333333333,
+      "sampling_offset_s": -0.016666666666666607,
+      "path": "code/outputs/genai/frame_000258.png",
+      "sha256": "1af71eee8077fe62acee5ec9cfe8a9b50c463ffa2484a751807adcd75a90d24f"
+    }
+  ],
+  "ai_generation": "[AI-GENERATION] Audit extracts of the supplied MiniMax-H3 output",
+  "timing_note": "Nominal timestamp extraction only; no search for favorable frames or correction of model retiming."
+}

@@ -1,6 +1,6 @@
 clip_id,frame,frame_path,mask_path,annotator,occluder,annotated_before_inference
-clip,0,../../data/personal/clip/frames/frame_000000.png,../../data/personal/clip/masks/mask_000000.png,Alden,blue book,yes
-clip,183,../../data/personal/clip/frames/frame_000183.png,../../data/personal/clip/masks/mask_000183.png,Alden,blue book,yes
-clip,257,../../data/personal/clip/frames/frame_000257.png,../../data/personal/clip/masks/mask_000257.png,Alden,blue book,yes
-clip,274,../../data/personal/clip/frames/frame_000274.png,../../data/personal/clip/masks/mask_000274.png,Alden,blue book,yes
-clip,385,../../data/personal/clip/frames/frame_000385.png,../../data/personal/clip/masks/mask_000385.png,Alden,blue book,yes
+personal_clip,228,../../data/personal/personal_clip/frames/frame_000228.png,../../data/personal/personal_clip/masks/mask_000228.png,Alden,none,yes
+personal_clip,244,../../data/personal/personal_clip/frames/frame_000244.png,../../data/personal/personal_clip/masks/mask_000244.png,Alden,blue book,yes
+personal_clip,258,../../data/personal/personal_clip/frames/frame_000258.png,../../data/personal/personal_clip/masks/mask_000258.png,Alden,blue book,yes
+personal_clip,354,../../data/personal/personal_clip/frames/frame_000354.png,../../data/personal/personal_clip/masks/mask_000354.png,Alden,blue book,yes
+personal_clip,374,../../data/personal/personal_clip/frames/frame_000374.png,../../data/personal/personal_clip/masks/mask_000374.png,Alden,blue book,yes

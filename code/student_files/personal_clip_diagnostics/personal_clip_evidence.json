@@ -1,0 +1,333 @@
+{
+  "clip_id": "personal_clip",
+  "variant": "flow_assisted",
+  "source_fps": 30.0,
+  "helper_sha256": "e516f28d0e041657ec77629dca52bf584dbe1fe0208104acd63ad325239f492f",
+  "selection": "Declared clean frame; first missing-model audit frame; largest finite saved-corner audit error.",
+  "difference_provenance": "Recomputed with frozen saved config and H reconstructed by normalised DLT from saved predicted corners; no audit-corner correction.",
+  "mask_provenance": "Saved predicted PNGs; reconstructed masks checked for exact agreement.",
+  "saved_artifact_sha256": {
+    "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/data/personal/personal_clip/clip.mp4": "625923f25d24538596bfaab233923afd42cfb3c8f8d6c4a41dd2075872d1821c",
+    "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/data/personal/personal_clip/reference.png": "d6087bb05eb6b3e64aa648a78dc1235bc0799791390a7e7f13c04b823630e48a",
+    "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/outputs/videos/personal_clip_flow_assisted.mp4": "ae46736813ddddcd34482a155ce39cf98f6553e7e9fdd1170fbe872b1bd59792",
+    "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/outputs/videos/personal_clip_flow_assisted_stats.json": "cb9627953ba09d1212206016e58645d2ac2d33b58c969d9590e9037d667f8e4c",
+    "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/outputs/videos/personal_clip_independent_stats.json": "1e7dfa4fb7d59e2d7448c8975faa876ac7104bd09e41303f0a1e7b39ca002e32",
+    "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/manifests/audit_corners.csv": "6609f4c953baf477983ab48f53866e7c0837a97152230db1fff42fa13d108414",
+    "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/manifests/audit_masks.csv": "45ecd968d79976178e044dfec375a79cd27e1792afed7c6acd5b0864e39654cd",
+    "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/data/personal/personal_clip/masks/mask_000228.png": "f5fd445dac2a9559cfbfb66637efa6966a7ed4e1c18081c51695e854eb245461",
+    "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/data/personal/personal_clip/masks/mask_000244.png": "111495b6fd61caff329f331d9191232f6d4bf01d01287fd06f8a59dc310937b1",
+    "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/data/personal/personal_clip/masks/mask_000258.png": "28c99b82719d99fecd5942c481bde6c9b722da89a681388c547b3b42a000d472",
+    "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/data/personal/personal_clip/masks/mask_000354.png": "3980af642939018cfa0db129c7f3e36e9e5eebdf3828a25d34548170bdb50a4d",
+    "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/data/personal/personal_clip/masks/mask_000374.png": "0950b9a185576f3ea431edbfaf5beaf9176b8a71e41e6b274a70fb3ccf98bbfb",
+    "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/outputs/videos/personal_clip_flow_assisted_masks/mask_000228.png": "b601bc92b2455944b5469ef86a143eeedea394d2e49abf4707563ce1b731c6fa",
+    "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/outputs/videos/personal_clip_flow_assisted_masks/mask_000374.png": "67c3532240dc006c6b9398ad9246755df9835f936bca95361974d7ffc24cb574",
+    "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/outputs/videos/personal_clip_flow_assisted_masks/mask_000258.png": "29fbb4a825663a06abea8f0bcc89932af7940100898b34f60ad859b320b6ee4f",
+    "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/outputs/videos/personal_clip_flow_assisted_masks/mask_000244.png": "390274e07937d6a8f8741266fb4ef3607e9ebd5d20c71fb02250273dcbc7053d",
+    "/Users/alden/Desktop/alden/Y4S1/CS4243/CS4243 Lab 2/code/outputs/videos/personal_clip_flow_assisted_masks/mask_000354.png": "1aa869f7bd7e974e8095034f2c345ed3314876a671ddb2fc319972408850d3eb"
+  },
+  "frames": [
+    {
+      "frame": 228,
+      "role": "Representative clean overlay",
+      "time_s": 7.6,
+      "predicted_corners": [
+        [
+          571.4337523207457,
+          141.98238987094723
+        ],
+        [
+          1615.2924111689792,
+          117.09041361768877
+        ],
+        [
+          1584.4256991114523,
+          846.9590731899663
+        ],
+        [
+          596.9034885659509,
+          877.4471686073263
+        ]
+      ],
+      "audit_corners": [
+        [
+          563.657,
+          153.6
+        ],
+        [
+          1625.143,
+          150.857
+        ],
+        [
+          1574.4,
+          844.8
+        ],
+        [
+          600.686,
+          883.2
+        ]
+      ],
+      "saved_corner_error": 0.01316103505745602,
+      "saved_statistics": {
+        "inlier_count": 65,
+        "inlier_ratio": 1.0,
+        "median_residual": 0.6873127095766536,
+        "corner_displacement": 6.606821516705745,
+        "mean_flow": 2.342768669128418,
+        "brightness_change": 0.03341468796133995,
+        "n_valid_points": 65,
+        "status": "ok",
+        "n_matches": null
+      },
+      "monitor_flag": "OK",
+      "monitor_trigger": "none",
+      "independent_statistics": {
+        "inlier_count": 174,
+        "inlier_ratio": 0.7073170731707317,
+        "median_residual": 0.9395061549872896,
+        "corner_displacement": 4.2113161877925585,
+        "mean_flow": 0.0,
+        "brightness_change": 0.03332560509443283,
+        "n_valid_points": 174,
+        "status": "ok",
+        "n_matches": 246
+      },
+      "independent_monitor": [
+        "OK",
+        "none"
+      ],
+      "monitor_thresholds": {
+        "min_inlier_count": 12,
+        "min_inlier_ratio": 0.4,
+        "max_median_residual": 3.0,
+        "max_corner_displacement": 60.0,
+        "max_mean_flow": 25.0,
+        "max_brightness_change": 0.15,
+        "hide_after_consecutive": 2
+      },
+      "reconstructed_H": [
+        [
+          0.9663756486370675,
+          0.07993281512967056,
+          571.4337523207456
+        ],
+        [
+          -0.0216168110910279,
+          1.0519379335705121,
+          141.98238987094715
+        ],
+        [
+          9.173617345953246e-06,
+          7.679094451772318e-05,
+          1.0
+        ]
+      ],
+      "corner_reconstruction_max_error_px": 3.2155493553843715e-13,
+      "reconstructed_mask_mismatch_pixels": 0,
+      "mask_iou": 0.0,
+      "mask_f1": 0.0,
+      "predicted_occluder_pixels": 72868,
+      "audit_occluder_pixels": 0,
+      "false_positive_mask_pixels": 72868,
+      "missed_occluder_pixels": 0,
+      "missed_outside_predicted_coverage": 0,
+      "missed_below_weak_inside_coverage": 0,
+      "missed_in_weak_band_inside_coverage": 0,
+      "missed_above_strong_inside_coverage": 0,
+      "figure": "student_files/personal_clip_diagnostics/personal_clip_frame_000228.png"
+    },
+    {
+      "frame": 91,
+      "role": "Failure: no saved localisation model",
+      "time_s": 3.033333333333333,
+      "predicted_corners": [
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ],
+        [
+          null,
+          null
+        ]
+      ],
+      "audit_corners": [
+        [
+          573.257,
+          223.543
+        ],
+        [
+          1459.2,
+          211.2
+        ],
+        [
+          1441.371,
+          850.286
+        ],
+        [
+          615.771,
+          792.686
+        ]
+      ],
+      "saved_corner_error": null,
+      "saved_statistics": {
+        "inlier_count": 4,
+        "inlier_ratio": 0.36363636363636365,
+        "median_residual": null,
+        "corner_displacement": null,
+        "mean_flow": 0.0,
+        "brightness_change": null,
+        "n_valid_points": 4,
+        "status": "lost",
+        "n_matches": 11
+      },
+      "monitor_flag": "HIDE",
+      "monitor_trigger": "no_model",
+      "independent_statistics": {
+        "inlier_count": 4,
+        "inlier_ratio": 0.36363636363636365,
+        "median_residual": null,
+        "corner_displacement": null,
+        "mean_flow": 0.0,
+        "brightness_change": null,
+        "n_valid_points": 4,
+        "status": "lost",
+        "n_matches": 11
+      },
+      "independent_monitor": [
+        "HIDE",
+        "no_model"
+      ],
+      "monitor_thresholds": {
+        "min_inlier_count": 12,
+        "min_inlier_ratio": 0.4,
+        "max_median_residual": 3.0,
+        "max_corner_displacement": 60.0,
+        "max_mean_flow": 25.0,
+        "max_brightness_change": 0.15,
+        "hide_after_consecutive": 2
+      },
+      "reconstructed_H": null,
+      "difference_available": false,
+      "mask_available": false,
+      "reason": "No finite saved model; pipeline skips warp and mask, then copies source.",
+      "mean_absolute_saved_output_difference": 0.01123724039644003,
+      "figure": "student_files/personal_clip_diagnostics/personal_clip_frame_000091.png"
+    },
+    {
+      "frame": 374,
+      "role": "Failure: largest finite audit corner error",
+      "time_s": 12.466666666666667,
+      "predicted_corners": [
+        [
+          499.3685154936347,
+          189.37571922553687
+        ],
+        [
+          1471.8301158356992,
+          222.40188248668437
+        ],
+        [
+          1449.1623296682633,
+          889.3226706436923
+        ],
+        [
+          492.14231112975995,
+          885.2136874625734
+        ]
+      ],
+      "audit_corners": [
+        [
+          488.229,
+          190.629
+        ],
+        [
+          1516.8,
+          227.657
+        ],
+        [
+          1460.571,
+          891.429
+        ],
+        [
+          500.571,
+          888.686
+        ]
+      ],
+      "saved_corner_error": 0.015920735817936477,
+      "saved_statistics": {
+        "inlier_count": 71,
+        "inlier_ratio": 1.0,
+        "median_residual": 0.7277381124862745,
+        "corner_displacement": 2.2070208539050378,
+        "mean_flow": 0.9532784223556519,
+        "brightness_change": 0.019950760528445244,
+        "n_valid_points": 71,
+        "status": "ok",
+        "n_matches": null
+      },
+      "monitor_flag": "OK",
+      "monitor_trigger": "none",
+      "independent_statistics": {
+        "inlier_count": 84,
+        "inlier_ratio": 0.6461538461538462,
+        "median_residual": 0.6607774022955446,
+        "corner_displacement": 2.0699057465122492,
+        "mean_flow": 0.0,
+        "brightness_change": 0.019905295222997665,
+        "n_valid_points": 84,
+        "status": "ok",
+        "n_matches": 130
+      },
+      "independent_monitor": [
+        "OK",
+        "none"
+      ],
+      "monitor_thresholds": {
+        "min_inlier_count": 12,
+        "min_inlier_ratio": 0.4,
+        "max_median_residual": 3.0,
+        "max_corner_displacement": 60.0,
+        "max_mean_flow": 25.0,
+        "max_brightness_change": 0.15,
+        "hide_after_consecutive": 2
+      },
+      "reconstructed_H": [
+        [
+          0.9445063207644864,
+          0.0016315148933242919,
+          499.3685154936349
+        ],
+        [
+          0.03887495675590595,
+          0.9518445066537178,
+          189.37571922553678
+        ],
+        [
+          3.942891533771485e-05,
+          2.2971299813566786e-05,
+          1.0
+        ]
+      ],
+      "corner_reconstruction_max_error_px": 5.518497755175417e-13,
+      "reconstructed_mask_mismatch_pixels": 0,
+      "mask_iou": 0.4283125561476267,
+      "mask_f1": 0.5997462590440988,
+      "predicted_occluder_pixels": 160062,
+      "audit_occluder_pixels": 304191,
+      "false_positive_mask_pixels": 20845,
+      "missed_occluder_pixels": 164974,
+      "missed_outside_predicted_coverage": 15775,
+      "missed_below_weak_inside_coverage": 134679,
+      "missed_in_weak_band_inside_coverage": 9784,
+      "missed_above_strong_inside_coverage": 4736,
+      "figure": "student_files/personal_clip_diagnostics/personal_clip_frame_000374.png"
+    }
+  ]
+}

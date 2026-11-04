@@ -1,0 +1,80 @@
+{
+  "provenance": "Transcribed summary of the request.json and result.json pasted by the user; generation date supplied separately by the user. This is a summary, not a byte-for-byte copy of the cluster files. Full download_metadata entries are not reproduced; their common revision and one original entry are retained below.",
+  "generation_date": "2026-11-03",
+  "request": {
+    "model": "MiniMaxAI/MiniMax-H3",
+    "model_directory": "/home/e/e1122474/minimax_h3_stage4/models/MiniMax-H3",
+    "workflow": "ref2va",
+    "prompt": "Replace the advertisement on the board in <Video 1> with the attached artwork <Picture 1>.",
+    "seed": 500,
+    "dtype": "bfloat16",
+    "quantization": null,
+    "num_inference_steps": 30,
+    "num_frames": 124,
+    "output_fps": 24,
+    "height": 480,
+    "width": 864,
+    "reference_image_short_edge": 768,
+    "source_interval_inclusive": [120, 269],
+    "source_fps": 30,
+    "audit_frames": {
+      "clean": 228,
+      "occluded": 258,
+      "perspective": 137,
+      "pair": [246, 247]
+    },
+    "references_in_order": [
+      "/home/e/e1122474/minimax_h3_stage4/inputs/interval.mp4",
+      "/home/e/e1122474/minimax_h3_stage4/inputs/cliff.png"
+    ],
+    "input_sha256": {
+      "video": "38ccbdfcea6e5d28bef07de7d9f2512705919b618f23579b7064ec506769b92e",
+      "artwork": "d7181fb329665f98e2f2cd1bf26331f143edb4f9084fb733178ec27f94742d68"
+    },
+    "helper_sha256": "5e01b991fcbf015a3830478b261f1c3c382944dca758a8a950a694e193bec7a9",
+    "model_index_sha256": "a2b6a210e482ffb78e613b553f570c44e101afce6741bd4ed91429d0559af031",
+    "gpu": "NVIDIA A100 80GB PCIe",
+    "gpu_total_bytes": 85093777408,
+    "torch_cuda": "12.8",
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+    "platform": "Linux-6.8.0-147-generic-x86_64-with-glibc2.39",
+    "slurm_job_id": "1069529",
+    "versions": {
+      "torch": "2.8.0+cu128",
+      "torchvision": "0.23.0+cu128",
+      "diffusers": "0.42.0.dev0",
+      "transformers": "5.22.1",
+      "accelerate": "1.15.0",
+      "av": "19.0.2"
+    },
+    "offloading": "Component-level automatic CPU offload; 12GB GPU reserve",
+    "declaration": "[AI-GENERATION] Separate H3 experiment; preserve earlier attempts."
+  },
+  "download_metadata_summary": {
+    "revision": "42ed227ee7df40d41602854ae760620d6eb651fe",
+    "example_path": ".cache/huggingface/download/modular_model_index.json.metadata",
+    "example_original_value": "42ed227ee7df40d41602854ae760620d6eb651fe\n5b69f1e801bd0a7e9733c48704c732339f2002fe\n1793713820.245521\n"
+  },
+  "result": {
+    "output": "/home/e/e1122474/minimax_h3_stage4/outputs/h3_1069529/output.mp4",
+    "output_sha256": "24885092268bde1ed2f56de684d2f107f13720be56b93564eb2fc339c0583476",
+    "actual_frames": 124,
+    "output_fps": 24,
+    "load_seconds": 51.34503073198721,
+    "generation_seconds": 983.403085350059,
+    "peak_gpu_allocated_bytes": 72259026432
+  },
+  "timing_scope": "genai_log.csv processing_time_s uses generation_seconds, matching the user's stated approximately 983-second runtime. Loading is recorded separately. Loading plus generation is 1034.7481160820462 seconds; this excludes output encoding and is not total Slurm wall time.",
+  "local_hash_verification": {
+    "code/outputs/genai/output.mp4": "matches result.output_sha256",
+    "code/outputs/genai/inputs/interval.mp4": "matches request.input_sha256.video",
+    "data/artwork/cliff.png": "matches request.input_sha256.artwork",
+    "code/student_files/generate_h3.py": "matches request.helper_sha256"
+  },
+  "remaining_provenance_limits": [
+    "Generation date is user-reported; no job timestamp record was supplied.",
+    "Package versions and checkpoint revision are recorded from the pasted request, not independently checked on the cluster.",
+    "CPU RAM allocation, NumPy and OpenCV versions, and total Slurm wall time were not supplied.",
+    "Earlier VACE and H3 invocations still require separate historical records."
+  ]
+}

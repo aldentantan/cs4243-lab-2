@@ -6,8 +6,8 @@
   "fps": 30.0,
   "n_frames": 500,
   "timing": {
-    "track_s": 237.0911979675293,
-    "composite_s": 25.577166080474854
+    "track_s": 237.32886624336243,
+    "composite_s": 25.826945066452026
   },
   "reinit_frames": [
     0,
@@ -63627,7 +63627,7 @@
     "resize_width": null
   },
   "request": {
-    "code_sha256": "4c5cda0d92b808ede6948512151f5601822e53fce8725bcaf287dc51afec190d",
+    "code_sha256": "b516d28cf39c1a562f7b068b090886fe06eb78623ce9eea0c86daa99672f7852",
     "source_sha256": "8f2e237de51f83662b100f7e220ccaad6a6e132453fad6ac75eec65a36e96fb8",
     "reference_sha256": "114f9b8310b2c2baef7529ee5fd4bb443a0a407064fe605d1617a0c12d58848a",
     "config": {
