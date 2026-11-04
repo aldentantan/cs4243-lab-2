@@ -1,0 +1,31 @@
+{
+  "purpose": "Appendix evidence for the VACE generation preceding the evaluated MiniMax-H3 comparison.",
+  "model": "Wan2.1-VACE-1.3B",
+  "generation_date_as_recorded": "2026-11-01",
+  "date_verification": "Historical CSV declaration; no original job timestamp record recovered.",
+  "exact_executed_prompt": "A handheld video of a rectangular NUS ranking poster mounted on a wall. The poster displays the supplied reference artwork, with a light blue background, dark blue ranking text, a large orange “1st”, and a photograph of a university building. The design fills the poster surface and follows its changing perspective. A blue book passes in front of the poster.",
+  "invocation_classification": "Completed generation with unsuccessful artwork replacement, the artwork was not replaced onto the poster in the final output.",
+  "historical_log_values": {
+    "date": "2026-11-01",
+    "model": "Wan2.1-VACE-1.3B",
+    "visible_version": "Wan2.1-VACE-1.3B checkpoint; ali-vilab/VACE inference",
+    "settings": "{\"model_name\":\"vace-1.3B\",\"size\":\"480p\",\"frame_num\":81,\"sample_steps\":50,\"offload_model\":true}",
+    "seed": "500",
+    "interval": "120-269 inclusive; source frames at 30 fps; 5.00 s cut",
+    "output_fps": "16",
+    "inputs": "{\"source_video\":\"Gray-filled personal-clip cut, source frames 120-269 inclusive\",\"editable_mask\":\"Editable-board mask with the foreground book excluded\",\"reference_artwork\":\"nus_ranking.png\"}",
+    "input_resolution": "video/mask: 1920x1080, 150 frames at 30 fps; artwork: 1640x1148",
+    "output_resolution": "832x480",
+    "processing_time_s": "900",
+    "compute": "NUS SoC SLURM cluster; requested --gpus=a100-40 and --cpus-per-task=8; actual allocation/peak VRAM not recorded"
+  },
+  "evidence_limits": [
+    "Historical CSV values are recovered declarations, not independently verified execution records.",
+    "The 900-second runtime has no recovered original timing log.",
+    "Exact checkpoint and inference-repository revisions, actual GPU allocation and peak VRAM were not recorded."
+  ],
+  "attribution_markers": [
+    "[AI-GENERATION]",
+    "[AI-LANGUAGE]"
+  ]
+}

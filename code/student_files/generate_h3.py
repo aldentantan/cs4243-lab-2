@@ -1,8 +1,8 @@
 """Stage 4 MiniMax-H3 Ref2VA inference for an A100-80GB or larger GPU.
 
 Uses component-level automatic CPU offloading and the original interval video
-plus artwork. No masks, gray filling, classical overlay, prompt expansion,
-book tracking or board repair is performed. [AI-CODE]
+plus artwork. No masks, gray filling, classical overlay, prompt expansion
+or board repair is performed. [AI-CODE]
 """
 
 import argparse
@@ -44,7 +44,7 @@ def main():
     request_path = out_dir / "request.json"
     if output.exists() or request_path.exists():
         raise FileExistsError(
-            "Preserving previous attempt; use a new output directory."
+            "Output directory already contains run files; use a new output directory."
         )
 
     import av
@@ -112,7 +112,7 @@ def main():
         },
         "offloading": "Component-level automatic CPU offload; 12GB GPU reserve",
         "declaration": (
-            "[AI-GENERATION] Separate H3 experiment; preserve earlier attempts."
+            "[AI-GENERATION] MiniMax-H3 Ref2VA video generation."
         ),
     }
     request_path.write_text(json.dumps(request, indent=2) + "\n")
