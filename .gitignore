@@ -12,16 +12,3 @@ __pycache__/
 code/outputs/videos/*.webm
 code/outputs/annotation_check/
 code/outputs/evaluation/before_mask_pair_fix*/
-
-# Regenerable diagnostics from the dedicated VACE preprocessor.
-# Keep the original exported board masks, final paired MP4 inputs and provenance.
-code/outputs/genai/inputs/book_tracking_repaired_v1/board_masks/
-code/outputs/genai/inputs/book_tracking_repaired_v1/book_masks/
-code/outputs/genai/inputs/book_tracking_repaired_v1/editable_masks/
-code/outputs/genai/inputs/book_tracking_repaired_v1/preview.mp4
-code/outputs/genai/inputs/book_tracking_repaired_v1/review_*.jpg
-!code/outputs/genai/inputs/book_tracking_repaired_v1/review_000257.jpg
-
-# Superseded full-board-only prepared inputs; retained locally for provenance.
-code/outputs/genai/inputs/interval_inpaint.mp4
-code/outputs/genai/inputs/src_mask.mp4
